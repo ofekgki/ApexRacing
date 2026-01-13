@@ -4,13 +4,31 @@
 
     <item
         android:id="@+id/nav_home"
-        android:title="Home" />
+        android:title="Home"
+        android:icon="@drawable/home_grey"
+
+        />
 
     <item
-        android:id="@+id/nav_search"
-        android:title="Search" />
+        android:id="@+id/nav_stats"
+        android:title="Stats"
+        android:icon="@drawable/stats_grey"
+        />
 
+    <item
+        android:id="@+id/nav_fantasy"
+        android:title="Fantasy"
+        android:icon="@drawable/gamepad_grey"
+        />
+    <item
+        android:id="@+id/nav_calendar"
+        android:title="Calendar"
+        android:icon="@drawable/calendar_grey"
+        />
     <item
         android:id="@+id/nav_profile"
-        android:title="Profile" />
+        android:title="Profile"
+        android:icon="@drawable/profile_grey"
+        />
+
 </menu>

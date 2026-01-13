@@ -10,10 +10,12 @@
     <FrameLayout
         android:id="@+id/main_FRM_fragments"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_NAV_navbar">
+        app:layout_constraintBottom_toTopOf="@id/main_NAV_navbar"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
     </FrameLayout>
 
@@ -24,9 +26,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/menu_background"
         app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:labelMaxLines="1"
+        app:itemIconTint="@color/nav_item_color_state"
+        app:itemTextColor="@color/nav_item_color_state"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        />
 
- />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

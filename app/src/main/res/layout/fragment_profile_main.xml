@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileMain"
+    android:background="@color/background_color">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/profile_LBL_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Profile"
+        android:textSize="@dimen/page_name_default_text_size"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profile_IMG_profilePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_LBL_heading"
+        tools:src="@tools:sample/avatars"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/profile_LBL_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_text_size"
+        android:layout_marginTop="@dimen/default_fragment_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_IMG_profilePicture"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/profile_LBL_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="'@username"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/default_fragment_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_LBL_name"
+        />
+
+    <LinearLayout
+        android:id="@+id/profile_LL_chips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_LBL_username"
+        android:weightSum="2"
+        >
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/profile_CHP_favDriver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:chipCornerRadius="@dimen/default_chip_radius"
+            android:lineBreakStyle="normal"
+            app:chipStrokeColor="@color/stroke_chip_color"
+            android:backgroundTint="@color/background_chip_color"
+            />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/profile_CHP_favTeam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:chipCornerRadius="@dimen/default_chip_radius"
+            app:chipStrokeColor="@color/stroke_chip_color"
+            android:backgroundTint="@color/background_chip_color"
+
+            />
+    </LinearLayout>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/profile_CHP_fantasyRank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_LL_chips"
+        android:layout_margin="@dimen/default_fragment_margin"
+        app:chipCornerRadius="@dimen/default_chip_radius"
+        app:chipStrokeColor="@color/stroke_chip_color"
+        android:backgroundTint="@color/background_chip_color"
+
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/profile_LBL_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/profile_CHP_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        android:layout_margin="@dimen/default_margin"
+        app:chipStrokeColor="@color/stroke_chip_color"
+        app:chipBackgroundColor="@color/background_chip_logout_color"
+        app:chipSurfaceColor="@color/background_chip_color"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_CV_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_LBL_settings"
+        android:layout_margin="@dimen/default_margin"
+
+        />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="375dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="142dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="640dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

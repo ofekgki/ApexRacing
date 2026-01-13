@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-</resources>
+    <color name="red_inline">#F02B2B</color>
+    <color name="red_outline">#7A1D1D</color>
+    <color name="grey_inline">#CBC5D1</color>
+    <color name="grey_outline">#858C96</color>
+    <color name="menu_background">#1C1B1E</color>
+    <color name="pill_menu_color">#5B2022</color>
+    <color name="background_color">#280001</color>
+    <color name="background_chip_color">#974C4C</color>
+    <color name="background_chip_logout_color">#AD1D04</color>
+    <color name="stroke_chip_color">#301C1C</color>
+    </resources>
