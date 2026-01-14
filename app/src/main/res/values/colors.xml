@@ -10,6 +10,9 @@
     <color name="pill_menu_color">#5B2022</color>
     <color name="background_color">#280001</color>
     <color name="background_chip_color">#974C4C</color>
+    <color name="background_card_color">#301818</color>
     <color name="background_chip_logout_color">#AD1D04</color>
     <color name="stroke_chip_color">#301C1C</color>
+    <color name="f1_red">#FF2E2E</color>
+    <color name="progress_track_dark">#2A0F0F</color>
     </resources>

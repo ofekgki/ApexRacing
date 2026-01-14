@@ -14,6 +14,11 @@
     <style name="Theme.ApexRacing.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+
+    <style name="CircleImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
     <!-- Buttons navigate bar-->
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/pill_menu_color</item>

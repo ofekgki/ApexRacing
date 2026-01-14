@@ -4,5 +4,11 @@
     <dimen name="default_fragment_margin">12dp</dimen>
     <dimen name="default_text_size">18sp</dimen>
     <dimen name="default_chip_radius">36dp</dimen>
+    <dimen name="default_card_radius">18dp</dimen>
     <dimen name="page_name_default_text_size">24sp</dimen>
+    <dimen name="default_card_margin">8dp</dimen>
+    <dimen name="small_text_card">11sp</dimen>
+    <dimen name="big_text_card">25sp</dimen>
+    <dimen name="medium_text_card">18sp</dimen>
+    <dimen name="track_thickness">5dp</dimen>
 </resources>
