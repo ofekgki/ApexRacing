@@ -25,15 +25,17 @@
         android:id="@+id/profile_IMG_profilePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_big_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_LBL_heading"
-        tools:src="@tools:sample/avatars"
+
+        android:src="@drawable/user_profile_blank"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/CircleImage"
         app:strokeColor="@color/red_inline"
         app:strokeWidth="4dp"
+
+        android:layout_marginTop="@dimen/default_big_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_LBL_heading"
         />
 
     <com.google.android.material.textview.MaterialTextView
@@ -164,6 +166,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="640dp" />
+        app:layout_constraintGuide_begin="605dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

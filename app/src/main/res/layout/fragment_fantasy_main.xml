@@ -234,7 +234,8 @@
         app:layout_constraintTop_toBottomOf="@+id/fantasy_LBL_grid"
 
 
-        tools:src="@tools:sample/avatars" />
+        android:src="@drawable/user_profile_blank"
+        />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fantasy_IMG_driver2"
@@ -246,7 +247,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toEndOf="@+id/fantasy_IMG_driver1"
         app:layout_constraintTop_toBottomOf="@+id/fantasy_LBL_grid"
-        tools:src="@tools:sample/avatars"
+        android:src="@drawable/user_profile_blank"
         />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -259,7 +260,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toEndOf="@+id/fantasy_IMG_driver2"
         app:layout_constraintTop_toBottomOf="@+id/fantasy_LBL_grid"
-        tools:src="@tools:sample/avatars" />
+        android:src="@drawable/user_profile_blank"
+        />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fantasy_IMG_team2"
@@ -271,7 +273,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/fantasy_IMG_team1"
         app:layout_constraintTop_toBottomOf="@+id/fantasy_LBL_grid"
-        tools:src="@tools:sample/avatars" />
+        android:src="@drawable/user_profile_blank"
+        />
 
     <com.google.android.material.chip.Chip
         android:id="@+id/fantasy_CHP_drivers"
