@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_big_margin"
         tools:src="@tools:sample/avatars"
         />
 
@@ -22,7 +22,7 @@
         android:id="@+id/welcome_LBL_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_big_margin"
         android:text="APEX RACING"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Join the grid today"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_big_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_LBL_sentence"
@@ -75,7 +75,7 @@
         android:id="@+id/welcome_BTN_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_big_margin"
         android:text="Signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
             android:id="@+id/welcome_LL_BTN_google"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/default_margin"
+            android:layout_marginHorizontal="@dimen/default_big_margin"
             android:text="Google"
             />
 
@@ -102,7 +102,7 @@
             android:id="@+id/welcome_LL_BTN_apple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/default_margin"
+            android:layout_marginHorizontal="@dimen/default_big_margin"
             android:text="Apple"
             />
 
@@ -112,7 +112,7 @@
         android:id="@+id/welcome_LBL_loginSentence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/default_margin"
+        android:layout_marginVertical="@dimen/default_big_margin"
         android:text="Already have a pit crew?"
         app:layout_constraintBottom_toTopOf="@+id/welcome_BTN_login"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_big_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
