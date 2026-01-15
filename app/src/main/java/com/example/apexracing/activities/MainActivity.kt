@@ -5,6 +5,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.apexracing.R
 import com.example.apexracing.databinding.ActivityMainBinding
 
@@ -24,10 +26,15 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val navHost =
+            supportFragmentManager
+                .findFragmentById(R.id.main_FRM_fragments) as NavHostFragment
+
+        val navController = navHost.navController
+        binding.mainNAVNavbar.setupWithNavController(navController)
         initViews()
     }
 
     private fun initViews() {
-        TODO("Not yet implemented")
     }
 }

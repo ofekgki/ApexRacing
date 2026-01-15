@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.apexracing.ui.home.HomeMain"
+        android:label="Home"/>
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.apexracing.ui.calendar.CalendarMain"
+        android:label="Calendar"/>
+
+    <fragment
+        android:id="@+id/fantasyFragment"
+        android:name="com.example.apexracing.ui.fantasy.FantasyMain"
+        android:label="Fantasy"/>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.apexracing.ui.profile.ProfileMain"
+        android:label="Profile"/>
+
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.example.apexracing.ui.stats.StatsMain"
+        android:label="Stats"/>
+
+</navigation>

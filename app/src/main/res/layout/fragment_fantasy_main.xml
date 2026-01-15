@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginBottom="@dimen/default_small_margin"
-                android:text="Target: < 95%"
+                android:text="Target: 95%"
                 android:textColor="@color/grey_inline"
 
                 android:textSize="@dimen/small_text_card"

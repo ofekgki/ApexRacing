@@ -3,30 +3,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/homeFragment"
         android:title="Home"
         android:icon="@drawable/home_grey"
-
         />
 
     <item
-        android:id="@+id/nav_stats"
+        android:id="@+id/statsFragment"
         android:title="Stats"
         android:icon="@drawable/stats_grey"
         />
 
     <item
-        android:id="@+id/nav_fantasy"
+        android:id="@+id/fantasyFragment"
         android:title="Fantasy"
         android:icon="@drawable/gamepad_grey"
         />
     <item
-        android:id="@+id/nav_calendar"
+        android:id="@+id/calendarFragment"
         android:title="Calendar"
         android:icon="@drawable/calendar_grey"
         />
     <item
-        android:id="@+id/nav_profile"
+        android:id="@+id/profileFragment"
         android:title="Profile"
         android:icon="@drawable/profile_grey"
         />
