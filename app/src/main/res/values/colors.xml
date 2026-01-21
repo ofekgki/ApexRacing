@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="red_inline">#F02B2B</color>
+    <color name="red_inline">#FF2E2E</color>
     <color name="red_outline">#7A1D1D</color>
     <color name="grey_inline">#CBC5D1</color>
     <color name="grey_outline">#858C96</color>
@@ -13,6 +13,5 @@
     <color name="background_card_color">#301818</color>
     <color name="background_chip_logout_color">#AD1D04</color>
     <color name="stroke_chip_color">#301C1C</color>
-    <color name="f1_red">#FF2E2E</color>
     <color name="progress_track_dark">#2A0F0F</color>
     </resources>

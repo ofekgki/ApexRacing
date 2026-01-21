@@ -9,9 +9,9 @@
         />
 
     <item
-        android:id="@+id/statsFragment"
-        android:title="Stats"
-        android:icon="@drawable/stats_grey"
+        android:id="@+id/calendarFragment"
+        android:title="Calendar"
+        android:icon="@drawable/calendar_grey"
         />
 
     <item
@@ -20,9 +20,9 @@
         android:icon="@drawable/gamepad_grey"
         />
     <item
-        android:id="@+id/calendarFragment"
-        android:title="Calendar"
-        android:icon="@drawable/calendar_grey"
+        android:id="@+id/exploreFragment"
+        android:title="Explore"
+        android:icon="@drawable/explore_grey"
         />
     <item
         android:id="@+id/profileFragment"
