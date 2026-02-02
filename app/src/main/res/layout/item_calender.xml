@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemCalender_ROOT"
+    android:layout_width="match_parent"
+    android:layout_height="86dp"
+    android:paddingStart="18dp"
+    android:paddingEnd="18dp"
+    android:background="@color/calender_background_color">
+
+    <!-- Divider top -->
+    <View
+        android:id="@+id/itemRaceRow_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/calender_divider"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/itemRaceRow_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="13"
+        android:textColor="@color/white"
+        android:textSize="@dimen/item_calander_big_text"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/itemRaceRow_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mar"
+        android:textColor="@color/white"
+        android:textSize="@dimen/small_text_card"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="@id/itemRaceRow_day"
+        app:layout_constraintTop_toBottomOf="@id/itemRaceRow_day" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/itemRaceRow_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="Chinese GP"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/itemRaceRow_day"
+        app:layout_constraintTop_toTopOf="@id/itemRaceRow_day" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/itemRaceRow_meta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_big_margin"
+        android:layout_marginTop="@dimen/default_small_margin"
+        android:text="R02 • Shanghai"
+        android:textColor="@color/white"
+        android:textSize="@dimen/small_text_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/itemRaceRow_day"
+        app:layout_constraintTop_toBottomOf="@id/itemRaceRow_title" />
+
+    <!-- Track icon  -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/itemRaceRow_trackIcon"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:src="@drawable/ic_track_outline_placeholder"
+        android:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

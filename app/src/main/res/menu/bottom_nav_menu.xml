@@ -14,16 +14,16 @@
         android:icon="@drawable/calendar_grey"
         />
 
-    <item
-        android:id="@+id/fantasyFragment"
-        android:title="Fantasy"
-        android:icon="@drawable/gamepad_grey"
-        />
+
     <item
         android:id="@+id/exploreFragment"
         android:title="Explore"
         android:icon="@drawable/explore_grey"
         />
+    <item
+        android:id="@+id/fantasyFragment"
+        android:title="Fantasy"
+        android:icon="@drawable/gamepad_grey"/>
     <item
         android:id="@+id/profileFragment"
         android:title="Profile"

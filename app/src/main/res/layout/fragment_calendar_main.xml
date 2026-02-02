@@ -1,13 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/calendar_ROOT"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.calendar.CalendarMain">
+    android:background="@color/calender_background_color">
 
-
-    <androidx.recyclerview.widget.RecyclerView
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/calendar_HERO"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_calendar_hero_red"
+        android:layout_marginTop="@dimen/default_small_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-</FrameLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/calendar_LBL_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_fragment_margin"
+            android:text="Round 01"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small_text_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/calendar_LBL_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Australian GP"
+            android:textColor="@color/white"
+            android:textSize="@dimen/big_text_card"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/default_fragment_margin"
+            android:layout_marginTop="@dimen/default_small_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendar_LBL_round"
+            app:layout_constraintEnd_toStartOf="@id/calendar_track3D" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/calendar_LBL_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Melbourne"
+            android:textColor="@color/gold"
+            android:textSize="@dimen/medium_text_card"
+            android:layout_marginStart="@dimen/default_fragment_margin"
+            android:layout_marginTop="@dimen/default_small_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendar_LBL_title" />
+
+        <TextView
+            android:id="@+id/calendar_LBL_dates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="06 - 09 Mar"
+            android:textColor="@color/white"
+            android:textSize="@dimen/medium_text_card"
+            android:layout_marginStart="@dimen/default_fragment_margin"
+            android:layout_marginTop="@dimen/default_small_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendar_LBL_location" />
+
+        <!-- track placeholder -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/calendar_track3D"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginEnd="@dimen/default_small_margin"
+                android:layout_marginTop="@dimen/default_small_margin"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_track_3d_placeholder"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calendar_LBL_title" />
+
+        <!-- Countdown -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/calendar_LBL_countTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/race_weekend_in"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:layout_marginStart="@dimen/default_fragment_margin"
+            android:layout_marginTop="@dimen/default_fragment_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendar_LBL_dates" />
+
+        <LinearLayout
+            android:id="@+id/calendar_COUNTDOWN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_fragment_margin"
+            android:layout_marginTop="@dimen/default_small_margin"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendar_LBL_countTitle">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/calendar_TXT_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="31"
+                    android:textColor="@color/gold"
+                    android:textSize="@dimen/default_countdown_size"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/days"
+                    android:textColor="@color/grey_inline"
+                    android:textSize="@dimen/small_text_card" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/calendar_TXT_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="01"
+                    android:textColor="@color/gold"
+                    android:textSize="@dimen/default_countdown_size"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hours"
+                    android:textColor="@color/grey_inline"
+                    android:textSize="@dimen/small_text_card" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/calendar_TXT_mins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="36"
+                    android:textColor="@color/gold"
+                    android:textSize="@dimen/default_countdown_size"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Minutes"
+                    android:textColor="@color/grey_inline"
+                    android:textSize="@dimen/small_text_card" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- List below hero -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendar_RV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="96dp"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/calendar_HERO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

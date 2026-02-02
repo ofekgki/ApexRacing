@@ -16,7 +16,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="2026 season"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:textSize="@dimen/big_text_card"
