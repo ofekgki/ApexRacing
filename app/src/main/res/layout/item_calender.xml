@@ -71,9 +71,9 @@
     <!-- Track icon  -->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/itemRaceRow_trackIcon"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:src="@drawable/ic_track_outline_placeholder"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/circuit_shanghai"
         android:tint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

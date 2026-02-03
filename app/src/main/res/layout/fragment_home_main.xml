@@ -1,14 +1,630 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_SCR"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeMain">
+    android:fillViewport="true"
+    android:background="@color/background_color">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_ROOT"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="24dp">
 
-</FrameLayout>
+        <!-- Header -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/home_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/home_IMG_avatar"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:src="@drawable/user_profile_blank"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/home_TXT_welcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Welcome back,"
+                android:textColor="@color/grey_outline"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/home_IMG_avatar"
+                app:layout_constraintTop_toTopOf="@id/home_IMG_avatar" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/home_TXT_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Alex"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/home_TXT_welcome"
+                app:layout_constraintTop_toBottomOf="@id/home_TXT_welcome" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Next Race row -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/home_TXT_nextRace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Next Race"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_header" />
+
+        <!-- Next Race hero card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/home_CARD_nextRace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="22dp"
+            app:cardUseCompatPadding="false"
+            app:cardElevation="0dp"
+            app:strokeColor="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/home_TXT_nextRace"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/home_IMG_race"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/view_monaco"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintDimensionRatio="H,16:11" />
+
+                <!-- dark overlay -->
+                <View
+                    android:id="@+id/home_V_overlay"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/bg_gradient_race_overlay"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/home_IMG_race"
+                    app:layout_constraintBottom_toBottomOf="@id/home_IMG_race"
+                    app:layout_constraintStart_toStartOf="@id/home_IMG_race"
+                    app:layout_constraintEnd_toEndOf="@id/home_IMG_race" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_BADGE_round"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ROUND 08"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="7dp"
+                    android:background="@drawable/bg_badge_red"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/home_IMG_race" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_TXT_raceName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Monaco\nGrand Prix"
+                    android:textColor="@android:color/white"
+                    android:textSize="34sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_BADGE_round"
+                    app:layout_constraintEnd_toStartOf="@id/home_IMG_flag"
+                    android:lineSpacingExtra="0dp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/home_IMG_flag"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/flag_monaco"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="18dp"
+                    app:layout_constraintTop_toTopOf="@id/home_IMG_race"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_TXT_track"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="📍 Circuit de Monaco"
+                    android:textColor="@color/white_85"
+                    android:textSize="14sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_TXT_raceName"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Countdown -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/home_CARD_countdown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/card_dark_80"
+                    app:layout_constraintTop_toBottomOf="@id/home_TXT_track"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="14dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+                        <!-- DAYS -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/home_TXT_days"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="03"
+                                android:textColor="@color/white"
+                                android:textSize="26sp"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DAYS"
+                                android:textColor="@color/white_70"
+                                android:textSize="11sp"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- HRS -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/home_TXT_hours"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="14"
+                                android:textColor="@color/white"
+                                android:textSize="26sp"
+                                />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="HRS"
+                                android:textColor="@color/white_70"
+                                android:textSize="11sp"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- MINS -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/home_TXT_mins"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="22"
+                                android:textColor="@color/white"
+                                android:textSize="26sp"
+                                />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MINS"
+                                android:textColor="@color/white_70"
+                                android:textSize="11sp"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- SECS -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/home_TXT_secs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="45"
+                                android:textColor="@color/white"
+                                android:textSize="26sp"
+                                />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SECS"
+                                android:textColor="@color/white_70"
+                                android:textSize="11sp"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Fantasy League title -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/home_TXT_fantasyTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Fantasy League"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintTop_toBottomOf="@id/home_CARD_nextRace"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Stats row -->
+        <LinearLayout
+            android:id="@+id/home_ROW_fantasyStats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@id/home_TXT_fantasyTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Total Points card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/home_CARD_points"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/card_dark">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="14dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/home_IC_points"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/trophy"
+                        android:tint="@color/brand_red"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/home_BADGE_pointsDelta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+12%"
+                        android:textSize="12sp"
+                        android:textColor="@color/green"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:background="@drawable/bg_badge_green"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/home_LBL_points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOTAL POINTS"
+                        android:textColor="@color/white_70"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/home_TXT_pointsValue"
+                        android:layout_marginBottom="6dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/home_TXT_pointsValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1,240"
+                        android:textColor="@color/white"
+                        android:textSize="26sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Global Rank card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/home_CARD_rank"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/card_dark">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="14dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/home_IC_rank"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/globe"
+                        android:tint="@color/blue"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/home_BADGE_rankDelta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="▲ 2"
+                        android:textSize="12sp"
+                        android:textColor="@color/green"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:background="@drawable/bg_badge_green"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/home_LBL_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GLOBAL RANK"
+                        android:textColor="@color/white_70"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/home_TXT_rankValue"
+                        android:layout_marginBottom="6dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/home_TXT_rankValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4th"
+                        android:textColor="@color/white"
+                        android:textSize="26sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <!-- Your Driver title -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/home_TXT_driverTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Your Driver"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintTop_toBottomOf="@id/home_ROW_fantasyStats"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Your Driver card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/home_CARD_driver"
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/card_dark"
+            app:layout_constraintTop_toBottomOf="@id/home_TXT_driverTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/home_IMG_driver"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/lewis"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_TXT_team"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mercedes-AMG PETRONAS"
+                    android:textColor="@color/white_70"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/home_IMG_driver"
+                    app:layout_constraintTop_toTopOf="@id/home_IMG_driver"
+                    app:layout_constraintEnd_toStartOf="@id/home_IMG_driverArt"
+                    android:layout_marginStart="12dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_TXT_driverName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lewis Hamilton"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="@id/home_TXT_team"
+                    app:layout_constraintTop_toBottomOf="@id/home_TXT_team"
+                    app:layout_constraintEnd_toStartOf="@id/home_IMG_driverArt"
+                    android:layout_marginTop="2dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_TXT_driverNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="44"
+                    android:textColor="@color/brand_red"
+                    android:textSize="34sp"
+                    app:layout_constraintStart_toStartOf="@id/home_TXT_team"
+                    app:layout_constraintTop_toBottomOf="@id/home_TXT_driverName"
+                    android:layout_marginTop="4dp" />
+
+                <!-- Right art -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/home_IMG_driverArt"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/f1car"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.9"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="0.42"
+                    app:layout_constraintStart_toEndOf="@id/home_TXT_team" />
+
+                <View
+                    android:id="@+id/home_V_driverArtOverlay"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/bg_gradient_driver_overlay"
+                    app:layout_constraintTop_toTopOf="@id/home_IMG_driverArt"
+                    app:layout_constraintBottom_toBottomOf="@id/home_IMG_driverArt"
+                    app:layout_constraintStart_toStartOf="@id/home_IMG_driverArt"
+                    app:layout_constraintEnd_toEndOf="@id/home_IMG_driverArt" />
+
+                <!-- Bottom left stats -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_LBL_seasonRank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Season Rank"
+                    android:textColor="@color/white_70"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/home_TXT_seasonRankVal"
+                    android:layout_marginBottom="6dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_TXT_seasonRankVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P3"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_TXT_seasonPts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="190 pts"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/home_TXT_seasonRankVal"
+                    app:layout_constraintBaseline_toBaselineOf="@id/home_TXT_seasonRankVal"
+                    android:layout_marginStart="10dp" />
+
+                <!-- Bottom right stats -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_LBL_lastRace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last Race"
+                    android:textColor="@color/white_70"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@id/home_IMG_driverArt"
+                    app:layout_constraintBottom_toTopOf="@id/home_TXT_lastRaceVal"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="10dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_TXT_lastRaceVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P5"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/home_IMG_driverArt"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="10dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/home_BADGE_lastRaceDelta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+10 pts"
+                    android:textSize="12sp"
+                    android:textColor="@color/green"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="6dp"
+                    android:background="@drawable/bg_badge_green"
+                    app:layout_constraintStart_toEndOf="@id/home_TXT_lastRaceVal"
+                    app:layout_constraintBaseline_toBaselineOf="@id/home_TXT_lastRaceVal"
+                    android:layout_marginStart="10dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -17,4 +17,17 @@
     <color name="progress_track_dark">#2A0F0F</color>
     <color name="gold">#F2D28A</color>
     <color name="calender_divider">#1A1A1A</color>
+
+    <color name="bg_home">#0E0E0E</color>
+    <color name="card_dark">#1B1B1B</color>
+    <color name="card_dark_80">#CC1B1B1B</color>
+
+    <color name="brand_red">#E11D2E</color>
+    <color name="green">#22C55E</color>
+    <color name="blue">#60A5FA</color>
+
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_85">#D9FFFFFF</color>
+
+    <color name="badge_green_bg">#1A2E2A</color>
 </resources>

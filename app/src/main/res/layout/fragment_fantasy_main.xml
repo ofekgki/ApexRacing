@@ -171,7 +171,7 @@
                 android:layout_marginBottom="@dimen/default_small_margin"
                 android:paddingHorizontal="@dimen/default_fragment_margin"
                 android:progress="75"
-                app:indicatorColor="@color/f1_red"
+                app:indicatorColor="@color/brand_red"
                 app:layout_constraintBottom_toTopOf="@+id/guideline7"
 
                 app:layout_constraintEnd_toEndOf="parent"
