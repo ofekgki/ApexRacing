@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.apexracing" />
+                  <option name="mobileSdkAppId" value="1:410327072166:android:d0b35abdc18eab4c4b2367" />
+                  <option name="projectId" value="apex-racing-36dc7" />
+                  <option name="projectNumber" value="410327072166" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
