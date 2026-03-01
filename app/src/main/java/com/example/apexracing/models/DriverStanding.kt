@@ -1,9 +1,6 @@
 package com.example.apexracing.models
 
 data class DriverStanding(
-    val position: Int,
-    val points: Double,
-    val wins: Int,
-    val driver: Driver,
+    val driver: List<Driver>,
     val constructors: List<Constructor>
 )
