@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/background_color">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_LBL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_TIL_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        app:hintTextColor="@color/grey_inline"
+        app:layout_constraintTop_toBottomOf="@id/login_LBL_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/default_big_margin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_EDT_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_TIL_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        app:hintTextColor="@color/grey_inline"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/login_TIL_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/default_big_margin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_EDT_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_BTN_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:backgroundTint="@color/brand_red"
+        app:layout_constraintTop_toBottomOf="@id/login_TIL_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/lbl_margin"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_LBL_goToSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_fragment_margin"
+        android:text="@string/back"
+        android:textSize="@dimen/default_text_size"
+        android:textColor="@color/grey_inline"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_BTN_login" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_LBL_forgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_fragment_margin"
+        android:text="@string/forgot_password"
+        android:textSize="@dimen/default_text_size"
+        android:textColor="@color/grey_inline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_BTN_login" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

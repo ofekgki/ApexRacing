@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemCalender_ROOT"
     android:layout_width="match_parent"
     android:layout_height="86dp"
@@ -71,9 +72,10 @@
     <!-- Track icon  -->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/itemRaceRow_trackIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/circuit_shanghai"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:scaleType="fitCenter"
+        tools:src="@drawable/circuit_shanghai"
         android:tint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

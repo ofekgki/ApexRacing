@@ -9,4 +9,15 @@
     <string name="upcoming">UPCOMING</string>
     <string name="race_weekend_in">Race Weekend in</string>
     <string name="days">Days</string>
+    <string name="sign_up_with_e_mail">Sign Up with E-mail</string>
+    <string name="apex_racing">APEX RACING</string>
+    <string name="slogan">Fantasy. Speed. Stat.</string>
+    <string name="the_ultimate_f1_fantasy_companion">The ultimate F1 fantasy\n companion.</string>
+    <string name="join_slogan">Join the grid today</string>
+    <string name="signup_text">Already have a pit crew?</string>
+    <string name="login">Login</string>
+    <string name="google">Google</string>
+    <string name="apple">Apple</string>
+    <string name="back">Back</string>
+    <string name="forgot_password">Forgot password?</string>
 </resources>

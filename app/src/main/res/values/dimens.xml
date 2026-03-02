@@ -14,4 +14,7 @@
     <dimen name="default_card_padding">14dp</dimen>
     <dimen name="default_countdown_size">34sp</dimen>
     <dimen name="item_calander_big_text">22sp</dimen>
+    <dimen name="name_size">48sp</dimen>
+    <dimen name="slogan_size">24sp</dimen>
+    <dimen name="lbl_margin">100dp</dimen>
 </resources>
