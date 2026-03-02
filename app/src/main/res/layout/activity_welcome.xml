@@ -6,48 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.WelcomeActivity"
-    android:background="@color/background_color"
+    android:background="@color/background_card_color"
     >
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/welcome_IMG_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_small_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/default_big_margin"
-        tools:src="@tools:sample/avatars"
-        />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/welcome_LBL_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_big_margin"
-        android:text="@string/apex_racing"
-        android:textSize="@dimen/name_size"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_IMG_logo"
+        android:src="@drawable/logo"
         />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/welcome_LBL_slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:fontFamily="serif"
         android:text="@string/slogan"
         android:textColor="@color/grey_inline"
         android:textSize="@dimen/slogan_size"
         android:textStyle="bold"
-        android:fontFamily="serif"
+        android:layout_marginTop="@dimen/default_big_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_LBL_name"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_IMG_logo" />
 
 
     <com.google.android.material.textview.MaterialTextView
@@ -81,54 +66,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_big_margin"
-        android:text="@string/sign_up_with_e_mail"
         android:backgroundTint="@color/brand_red"
+        android:text="@string/sign_up_with_e_mail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_LBL_secSentence" />
-
-    <LinearLayout
-        android:id="@+id/welcome_LL_loginbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_BTN_signup">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/welcome_LL_BTN_google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/brand_red"
-            android:layout_marginHorizontal="@dimen/default_big_margin"
-            android:text="@string/google"
-            />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/welcome_LL_BTN_apple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/brand_red"
-            android:layout_marginHorizontal="@dimen/default_big_margin"
-            android:text="@string/apple"
-
-            />
-
-    </LinearLayout>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/welcome_LBL_loginSentence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/default_big_margin"
+        android:layout_marginTop="@dimen/lbl_margin"
         android:text="@string/signup_text"
         android:textColor="@color/grey_inline"
         app:layout_constraintBottom_toTopOf="@+id/welcome_BTN_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_LL_loginbtn"
         />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/welcome_BTN_login"
