@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apexracing.databinding.ItemCalenderBinding
 import com.example.apexracing.models.*
-import com.google.firebase.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
 class CircuitAdapter(var races: List<Circuit> = emptyList())

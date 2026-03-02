@@ -1,6 +1,5 @@
 package com.example.apexracing.models
 
-import android.location.Location
 import com.google.firebase.firestore.GeoPoint
 import java.util.Date
 
