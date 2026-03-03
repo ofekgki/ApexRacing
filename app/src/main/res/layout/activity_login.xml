@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+            android:textColor="@color/white"
 
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -54,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:textColor="@color/white"
 
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -72,7 +74,7 @@
         />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/login_LBL_goToSignup"
+        android:id="@+id/login_LBL_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_fragment_margin"

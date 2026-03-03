@@ -30,31 +30,24 @@ object ValidationUtils {
         return null
     }
 
-    fun validatePassword(password: String): String? {
+    fun validatePassword(password: String): Boolean {
 
         if (password.isBlank())
-            return "Password is required"
+            return false
 
         if (password.contains(" "))
-            return "Password cannot contain spaces"
+            return false
 
         if (!PASSWORD_REGEX.matches(password))
-            return """
-                Password must contain:
-                • 8+ characters
-                • Uppercase letter
-                • Lowercase letter
-                • Number
-                • Special character
-            """.trimIndent()
+            return false
 
         if (isCommonWeakPassword(password))
-            return "Password is too common"
+            return false
 
         if (isSequential(password))
-            return "Password cannot be sequential numbers"
+            return false
 
-        return null
+        return true
     }
 
     private fun isCommonWeakPassword(password: String): Boolean {

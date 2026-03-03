@@ -5,54 +5,75 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apexracing.R
-import com.example.apexracing.databinding.ItemFavoriteDriverBinding
+import com.example.apexracing.databinding.ItemPickImageBinding
 import com.example.apexracing.models.Driver
-import com.example.apexracing.utilities.DBData
 import com.google.firebase.storage.FirebaseStorage
 
-class FavoriteDriverAdapter(private val onSelected: (Driver) -> Unit)
-    : RecyclerView.Adapter<FavoriteDriverAdapter.VH>() {
-    class VH(val binding: ItemFavoriteDriverBinding) : RecyclerView.ViewHolder(binding.root)
+class FavoriteDriverAdapter(
+    private val onSelected: (Driver) -> Unit
+) : RecyclerView.Adapter<FavoriteDriverAdapter.VH>() {
 
+    private val storageRef = FirebaseStorage.getInstance().reference
+
+    private var items: List<Driver> = emptyList()
     var selectedId: String? = null
         private set
 
+    class VH(val binding: ItemPickImageBinding) : RecyclerView.ViewHolder(binding.root)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val binding = ItemFavoriteDriverBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemPickImageBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return VH(binding)
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val driver = DBData.drivers[position]
-        holder.binding.itemDriverLBLName.text = buildString {
-            append(driver.givenName)
-            append(" ")
-            append(driver.familyName)
+        val d = items[position]
+
+        // Selection UI
+        val isSelected = d.id == selectedId
+        holder.binding.itemPickCARD.strokeWidth = if (isSelected) 6 else 2
+        holder.binding.itemPickCARD.setStrokeColor(
+            holder.itemView.context.getColor(
+                if (isSelected) R.color.brand_red else R.color.white
+            )
+        )
+
+        val path = d.imgRef.trim().removePrefix("/")
+        holder.binding.itemPickIMG.setImageDrawable(null)
+        holder.binding.itemPickIMG.tag = path
+
+        if (path.isNotBlank()) {
+            storageRef.child(path).downloadUrl
+                .addOnSuccessListener { uri ->
+                    if (holder.binding.itemPickIMG.tag == path) {
+                        Glide.with(holder.itemView)
+                            .load(uri)
+                            .placeholder(R.drawable.thestig)
+                            .error(R.drawable.thestig)
+                            .centerCrop()
+                            .into(holder.binding.itemPickIMG)
+                    }
+                }
+
         }
-        val teamName = DBData.getTeamNameForDriver(driver)
-        holder.binding.itemDriverLBLMeta.text = teamName ?: ""
-
-        // image
-        val storageRef = FirebaseStorage.getInstance().reference.child(driver.imgRef)
-        Glide.with(holder.itemView)
-            .load(storageRef)
-            .placeholder(R.drawable.user_profile_blank)
-            .error(R.drawable.user_profile_blank)
-            .into(holder.binding.itemDriverIMG)
-
-        // selection UI
-        val isSelected = (driver.id == selectedId)
-        holder.binding.itemDriverCARD.strokeWidth = if (isSelected) 5 else 1
 
         holder.itemView.setOnClickListener {
-            selectedId = driver.id
-            notifyDataSetChanged()
-            onSelected(driver)
+            val old = selectedId
+            selectedId = d.id
+            onSelected(d)
+            if (old != null) notifyItemChanged(items.indexOfFirst { it.id == old })
+            notifyItemChanged(position)
         }
     }
 
-    override fun getItemCount(): Int {
-        return DBData.drivers.size
-    }
+    override fun getItemCount() = items.size
 
+    fun submitList(list: List<Driver>) {
+        items = list
+        notifyDataSetChanged()
+    }
 }

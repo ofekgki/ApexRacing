@@ -95,16 +95,17 @@ class SignUpActivity : AppCompatActivity() {
                     "firstName" to cred.firstName,
                     "lastName" to cred.lastName,
                     "email" to cred.email,
-                    "favDriverId" to fav.driverId,
-                    "favTeamId" to fav.teamId,
+                    "favoriteDriver" to fav.driverId,
+                    "favoriteTeam" to fav.teamId,
+                    "fantasyPoints" to 0,
                     "createdAt" to System.currentTimeMillis()
                 )
 
                 rtdb.child("users").child(uid)
-                    .setValue(userMap) {
+                    .setValue(userMap)
+                    .addOnSuccessListener {
                         Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, WelcomeActivity::class.java)
-                        startActivity(intent)
+                        startActivity(Intent(this, WelcomeActivity::class.java))
                         finish()
                     }
                     .addOnFailureListener { e ->

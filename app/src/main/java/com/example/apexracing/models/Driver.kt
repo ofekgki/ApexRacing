@@ -2,10 +2,10 @@ package com.example.apexracing.models
 
 import com.google.firebase.firestore.DocumentReference
 
-data class Driver private constructor(
+data class Driver (
     val id: String = "",
     val code: String,
-    val constructorRef: DocumentReference? = null,
+    val constructor: DocumentReference? = null,
     val givenName: String,
     val familyName: String,
     val permanentNumber: Int,
@@ -15,25 +15,18 @@ data class Driver private constructor(
     val fantasyPrice: Int?,
     val imgRef: String,
 ) {
-    constructor() : this(
-        id = "",
-        code = "",
-        constructorRef  = null,
-        givenName = "",
-        familyName = "",
-        permanentNumber = 0,
-        nationality = "",
-        points = 0,
-        position = 0,
-        fantasyPrice = 0,
-        imgRef = ""
+    fun getFullName(): String {
+        return buildString {
+            append(givenName)
+                .append(" ")
+                .append(familyName)
+        }
+    }
 
-
-        )
     class Builder(
         var id: String = "",
         var code: String = "",
-        var constructorRef: DocumentReference? = null,
+        var constructor: DocumentReference? = null,
         var givenName: String = "",
         var familyName: String = "",
         var permanentNumber: Int = 0,
@@ -47,7 +40,7 @@ data class Driver private constructor(
 
         fun id(id: String) = apply { this.id = id }
         fun code(code: String) = apply { this.code = code }
-        fun constructorRef(constructorRef: DocumentReference) = apply { this.constructorRef = constructorRef }
+        fun constructor(constructorRef: DocumentReference) = apply { this.constructor = constructor }
         fun givenName(givenName: String) = apply { this.givenName = givenName }
         fun familyName(familyName: String) = apply { this.familyName = familyName }
         fun permanentNumber(permanentNumber: Int) = apply { this.permanentNumber = permanentNumber }
@@ -60,7 +53,7 @@ data class Driver private constructor(
         fun build() = Driver(
         id,
         code,
-        constructorRef,
+        constructor,
         givenName,
         familyName,
         permanentNumber,

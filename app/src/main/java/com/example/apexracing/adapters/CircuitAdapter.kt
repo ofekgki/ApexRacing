@@ -37,7 +37,6 @@ class CircuitAdapter(var races: List<Circuit> = emptyList())
         holder.binding.itemRaceRowMeta.text = "R %02d • %s".format(circuit.round, circuit.city)
 
         val path = circuit.layoutRef
-        Log.d("LAYOUT_PATH", "circuit=${circuit.circuitName} path=$path")
         if (!path.isNullOrBlank()) {
             storageRef.child(path).downloadUrl
                 .addOnSuccessListener { uri ->

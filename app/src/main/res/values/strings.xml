@@ -31,4 +31,6 @@
     <string name="favorite_driver">Favorite Driver</string>
     <string name="favorite_team">Favorite Team</string>
     <string name="pick_1_driver_1_team_to_finish">Pick 1 driver + 1 team to finish.</string>
+    <string name="change_favorite">Change Favorite</string>
+    <string name="logout">Logout</string>
 </resources>

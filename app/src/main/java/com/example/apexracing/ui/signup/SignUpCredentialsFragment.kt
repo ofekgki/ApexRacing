@@ -17,14 +17,14 @@ data class SignUpCredentials(
     val firstName: String,
     val lastName: String
 )
-    private var _binding: FragmentSignUpCredentialsBinding ?= null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentSignUpCredentialsBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSignUpCredentialsBinding.inflate(inflater, container, false)
+        binding = FragmentSignUpCredentialsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -48,8 +48,16 @@ data class SignUpCredentials(
         }
 
         val passwordError = ValidationUtils.validatePassword(password)
-        if (passwordError != null) {
-            binding.signup1TILPassword.error = passwordError
+        if (passwordError != true) {
+            binding.signup1TILPassword.error =
+                """
+                Password must contain:
+                • 8+ characters
+                • Uppercase letter
+                • Lowercase letter
+                • Number
+                • Special character
+            """.trimIndent()
             ok = false
         }
 
@@ -69,8 +77,5 @@ data class SignUpCredentials(
         binding.signup1TILLast.error = null
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }

@@ -6,6 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
 import com.example.apexracing.models.Constructor
 import com.example.apexracing.models.Driver
+import com.google.firebase.firestore.DocumentSnapshot
 
 object DBData {
 
@@ -20,15 +21,20 @@ object DBData {
     fun preloadAndWait(): Task<Void> {
         val db = FirebaseFirestore.getInstance()
 
-        val driversTask = db.collection("drivers")
+        val driversTask = db.collection(Constants.FIRESTORE.SEASONS)
+            .document("2026")
+            .collection(Constants.FIRESTORE.DRIVERS)
             .get()
             .continueWith { task ->
+
                 val snap = task.result ?: throw task.exception ?: Exception("Drivers task failed")
+
+
                 drivers = snap.documents.map { doc ->
                     Driver.Builder(
                         id = doc.id,
                         code = doc.getString("code") ?: "",
-                        constructorRef = doc.getDocumentReference("constructor"),
+                        constructor = doc.getDocumentReference("constructor"),
                         familyName = doc.getString("familyName") ?: "",
                         givenName = doc.getString("givenName") ?: "",
                         imgRef = doc.getString("imgRef") ?: "",
@@ -37,18 +43,22 @@ object DBData {
                         points = (doc.getLong("points") ?: 0L).toInt(),
                         position = (doc.getLong("position") ?: 0L).toInt()
                     ).build()
+
                 }.sortedBy { it.position }
+
             }
 
-        val teamsTask = db.collection("constructors")
+        val teamsTask = db.collection(Constants.FIRESTORE.SEASONS)
+            .document("2026")
+            .collection(Constants.FIRESTORE.CONSTRUCTORS)
             .get()
             .continueWith { task ->
                 val snap = task.result ?: throw task.exception ?: Exception("Teams task failed")
                 teams = snap.documents.map { doc ->
                     Constructor.Builder(
                         id = doc.id,
-                        driver1Ref = doc.getDocumentReference("driver1"),
-                        driver2Ref = doc.getDocumentReference("driver2"),
+                        driver1 = doc.getDocumentReference("driver1"),
+                        driver2 = doc.getDocumentReference("driver2"),
                         imgRef = doc.getString("imgRef") ?: "",
                         name = doc.getString("name") ?: "",
                         nationality = doc.getString("nationality") ?: "",
@@ -70,8 +80,4 @@ object DBData {
             }
     }
 
-    fun getTeamNameForDriver(driver: Driver): String? {
-        val constructorId = driver.constructorRef?.id ?: return null
-        return teamMap[constructorId]?.name
-    }
 }

@@ -29,10 +29,10 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        binding.welcomeBTNLogin.setOnClickListener { v ->
+        binding.welcomeBTNLogin.setOnClickListener {
             changeActivity<LoginActivity>()
         }
-        binding.welcomeBTNSignup.setOnClickListener { v ->
+        binding.welcomeBTNSignup.setOnClickListener {
             changeActivity<SignUpActivity>()
         }
     }
