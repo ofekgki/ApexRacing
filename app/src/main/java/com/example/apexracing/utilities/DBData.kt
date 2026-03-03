@@ -6,7 +6,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
 import com.example.apexracing.models.Constructor
 import com.example.apexracing.models.Driver
-import com.google.firebase.firestore.DocumentSnapshot
 
 object DBData {
 

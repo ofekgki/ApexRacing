@@ -1,6 +1,5 @@
 package com.example.apexracing.utilities
 
-import android.util.Log
 import com.example.apexracing.models.User
 import com.example.apexracing.models.UserIds
 
