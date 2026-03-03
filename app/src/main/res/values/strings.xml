@@ -20,4 +20,15 @@
     <string name="apple">Apple</string>
     <string name="back">Back</string>
     <string name="forgot_password">Forgot password?</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="next">Next</string>
+    <string name="step_1_of_2">Step 1 of 2</string>
+    <string name="username">Username</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="favorite_driver">Favorite Driver</string>
+    <string name="favorite_team">Favorite Team</string>
+    <string name="pick_1_driver_1_team_to_finish">Pick 1 driver + 1 team to finish.</string>
 </resources>

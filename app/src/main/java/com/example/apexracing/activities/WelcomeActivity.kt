@@ -1,5 +1,6 @@
 package com.example.apexracing.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,18 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        TODO("Not yet implemented")
+        binding.welcomeBTNLogin.setOnClickListener { v ->
+            changeActivity<LoginActivity>()
+        }
+        binding.welcomeBTNSignup.setOnClickListener { v ->
+            changeActivity<SignUpActivity>()
+        }
     }
+
+    private inline fun <reified T> changeActivity() {
+        val intent = Intent(this, T::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 }

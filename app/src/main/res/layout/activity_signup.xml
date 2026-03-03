@@ -1,10 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/signup_ROOT"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SignupActivity">
+    android:padding="20dp"
+    android:background="@color/background_color"
+    >
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signup_LBL_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/create_account"
+        android:textSize="@dimen/big_text_card"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/default_fragment_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signup_LBL_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/step_1_of_2"
+        android:textColor="@color/grey_inline"
+        android:textSize="@dimen/medium_text_card"
+        android:layout_marginTop="@dimen/default_small_margin"
+        app:layout_constraintTop_toBottomOf="@id/signup_LBL_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/signup_VP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/default_small_margin"
+        app:layout_constraintTop_toBottomOf="@id/signup_LBL_subtitle"
+        app:layout_constraintBottom_toTopOf="@id/signup_BOTTOM_BAR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signup_BOTTOM_BAR"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_big_margin"
+        android:layout_marginHorizontal="@dimen/default_text_size"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signup_BTN_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:textColor="@color/white"
+            app:strokeColor="@color/brand_red"
+            app:strokeWidth="2dp"
+            android:backgroundTint="@color/background_color"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.33" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signup_BTN_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:backgroundTint="@color/brand_red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
