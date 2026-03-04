@@ -1,16 +1,24 @@
 package com.example.apexracing.models
 
 data class User(
+    val id: String = "",
     val username: String,
     val firstName: String,
     val lastName: String,
     val email: String,
-    val fantasyBudget: Int,
-    val fantasyDriver1: Driver?,
-    val fantasyDriver2: Driver?,
-    val fantasyTeam1: Constructor?,
-    val fantasyTeam2: Constructor?,
+    val fantasyBudget: Float,
+    val fantasyDriver: List<Driver> = listOf(),
+    val fantasyConstructor: List<Constructor> = listOf(),
     val fantasyPoints: Int,
     val favoriteDriver: Driver?,
     val favoriteTeam: Constructor?
-)
+){
+
+fun getGridNum(): Int {
+    return fantasyDriver.size + fantasyConstructor.size
+}
+
+    fun getBudgetPercentage(): Float{
+        return  100 - fantasyBudget
+    }
+}

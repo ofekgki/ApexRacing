@@ -90,7 +90,7 @@ class CalendarMain : Fragment() {
             val ref = FirebaseStorage.getInstance().reference.child(path)
             ref.downloadUrl
                 .addOnSuccessListener { uri ->
-                    Glide.with(this)
+                    Glide.with(binding.root)
                         .load(uri)
                         .into(binding.calendarTrack3D)
                 }

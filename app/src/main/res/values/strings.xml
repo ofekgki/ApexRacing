@@ -33,4 +33,15 @@
     <string name="pick_1_driver_1_team_to_finish">Pick 1 driver + 1 team to finish.</string>
     <string name="change_favorite">Change Favorite</string>
     <string name="logout">Logout</string>
+    <string name="drivers">Drivers</string>
+    <string name="constructors">Constructors</string>
+    <string name="save_team">Save Team</string>
+    <string name="remaining_budget">REMAINING BUDGET</string>
+    <string name="total_cap">TOTAL CAP</string>
+    <string name="_100_0m">$100.0M</string>
+    <string name="team_management">Team Management</string>
+    <string name="target_95">Target: 95%</string>
+    <string name="my_grid">My Grid</string>
+    <string name="avaliable_options">Avaliable Options</string>
+    <string name="m">M</string>
 </resources>

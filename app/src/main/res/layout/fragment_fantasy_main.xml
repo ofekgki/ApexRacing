@@ -14,7 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:title="Team Management"
+        app:title="@string/team_management"
+        android:textAlignment="center"
         app:titleTextColor="@color/white"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="@dimen/default_small_margin"
-                android:text="REMAINING BUDGET"
+                android:text="@string/remaining_budget"
                 android:textAllCaps="true"
                 android:textColor="@color/grey_inline"
 
@@ -65,7 +66,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="@dimen/default_small_margin"
-                android:text="$24.5"
+                tools:text="$24.5"
                 android:textColor="@color/white"
                 android:textSize="@dimen/big_text_card"
 
@@ -79,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="M"
+                android:text="@string/m"
                 android:textColor="@color/grey_inline"
                 android:textSize="@dimen/medium_text_card"
 
@@ -95,7 +96,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="@dimen/default_small_margin"
-                android:text="TOTAL CAP"
+                android:text="@string/total_cap"
                 android:textAllCaps="true"
                 android:textColor="@color/grey_inline"
 
@@ -110,7 +111,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="@dimen/default_small_margin"
-                android:text="$100.0M"
+                android:text="@string/_100_0m"
                 android:textColor="@color/white"
                 android:textSize="@dimen/medium_text_card"
 
@@ -139,7 +140,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginBottom="@dimen/default_small_margin"
-                android:text="75.5% Used"
+                tools:text="75.5% Used"
                 android:textColor="@color/red_inline"
                 android:textColorHighlight="@color/white"
 
@@ -154,7 +155,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginBottom="@dimen/default_small_margin"
-                android:text="Target: 95%"
+                android:text="@string/target_95"
                 android:textColor="@color/grey_inline"
 
                 android:textSize="@dimen/small_text_card"
@@ -200,7 +201,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="My Grid"
+        android:text="@string/my_grid"
         android:textColor="@color/white"
         android:textSize="@dimen/medium_text_card"
 
@@ -214,129 +215,134 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="(3/4)"
         android:textColor="@color/white"
         android:textSize="@dimen/small_text_card"
-
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
+
         app:layout_constraintStart_toEndOf="@+id/fantasy_LBL_grid"
-        app:layout_constraintTop_toTopOf="@+id/fantasy_LBL_grid" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fantasy_IMG_driver1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-
-        android:layout_marginTop="@dimen/default_small_margin"
-        android:layout_marginStart="@dimen/default_small_margin"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/fantasy_LBL_grid"
+        tools:text="(0/5)" />
+    <LinearLayout
+        android:id="@+id/LL_drivers"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:weightSum="5"
+        android:layout_marginTop="@dimen/default_fragment_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fantasy_LBL_grid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fantasy_LBL_grid"
+
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fantasy_IMG_driver1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/user_profile_blank"
+            android:layout_weight="1"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fantasy_IMG_driver2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/user_profile_blank"
+            android:layout_weight="1"
 
 
-        android:src="@drawable/user_profile_blank"
-        />
+            />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fantasy_IMG_driver2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fantasy_IMG_driver3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/user_profile_blank"
+            android:layout_weight="1"
 
-        android:layout_marginTop="@dimen/default_small_margin"
 
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toEndOf="@+id/fantasy_IMG_driver1"
-        app:layout_constraintTop_toBottomOf="@+id/fantasy_LBL_grid"
-        android:src="@drawable/user_profile_blank"
-        />
+            />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fantasy_IMG_team1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fantasy_IMG_team1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/user_profile_blank"
+            android:layout_weight="1"
 
-        android:layout_marginTop="@dimen/default_small_margin"
 
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintStart_toEndOf="@+id/fantasy_IMG_driver2"
-        app:layout_constraintTop_toBottomOf="@+id/fantasy_LBL_grid"
-        android:src="@drawable/user_profile_blank"
-        />
+            />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fantasy_IMG_team2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fantasy_IMG_team2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/user_profile_blank"
 
-        android:layout_marginTop="@dimen/default_small_margin"
 
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintStart_toEndOf="@+id/fantasy_IMG_team1"
-        app:layout_constraintTop_toBottomOf="@+id/fantasy_LBL_grid"
-        android:src="@drawable/user_profile_blank"
-        />
+            />
+    </LinearLayout>>
 
-    <com.google.android.material.chip.Chip
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/fantasy_CHP_drivers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Drivers"
-
-        android:layout_marginBottom="@dimen/default_small_margin"
-        app:layout_constraintBottom_toTopOf="@+id/fantasy_LBL_available"
+        android:layout_marginTop="@dimen/default_fragment_margin"
+        android:backgroundTint="@color/white"
+        android:text="@string/drivers"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LL_drivers" />
 
-    <com.google.android.material.chip.Chip
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/fantasy_CHP_constructors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Constructors"
-
-        android:layout_marginBottom="@dimen/default_small_margin"
-        app:layout_constraintBottom_toTopOf="@+id/fantasy_LBL_available"
+        android:layout_marginTop="@dimen/default_fragment_margin"
+        android:backgroundTint="@color/white"
+        android:text="@string/constructors"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/LL_drivers" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/fantasy_LBL_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Avaliable Options"
+        android:layout_marginVertical="@dimen/default_fragment_margin"
+        android:text="@string/avaliable_options"
 
-        android:layout_marginBottom="@dimen/default_small_margin"
-        app:layout_constraintBottom_toTopOf="@+id/fantasy_RV_drivers"
+        android:textColor="@color/grey_inline"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fantasy_CHP_drivers" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fantasy_RV_drivers"
-        android:layout_width="409dp"
-        android:layout_height="150dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="508dp"
-
-        android:layout_marginBottom="@dimen/default_small_margin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/default_small_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/fantasy_BTN_save"
+        app:layout_constraintTop_toBottomOf="@id/fantasy_LBL_available"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fantasy_RV_constructors"
-        android:layout_width="409dp"
-        android:layout_height="150dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="508dp"
-
-        android:layout_marginBottom="@dimen/default_small_margin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/default_small_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/fantasy_BTN_save"
-
+        app:layout_constraintTop_toBottomOf="@id/fantasy_LBL_available"
+        android:visibility="gone"
         />
 
     <com.google.android.material.button.MaterialButton
@@ -344,7 +350,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Save Team"
+        android:text="@string/save_team"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
 
         android:layout_marginBottom="@dimen/default_fragment_margin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -357,14 +365,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="116dp" />
+        app:layout_constraintGuide_begin="120dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="187dp" />
+        app:layout_constraintGuide_begin="182dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"

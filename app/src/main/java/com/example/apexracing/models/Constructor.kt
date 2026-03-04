@@ -10,7 +10,7 @@ data class Constructor(
     val driver2: DocumentReference? = null,
     val points: Int,
     val position: Int,
-    val fantasyPrice: Int?,
+    val fantasyPrice: Float,
     val imgRef: String
 
 
@@ -24,7 +24,7 @@ data class Constructor(
         var driver2: DocumentReference? = null,
         var points: Int = 0,
         var position: Int = 0,
-        var fantasyPrice: Int = 0,
+        var fantasyPrice: Float = 0F,
         var imgRef: String = ""
 
 
@@ -37,7 +37,7 @@ data class Constructor(
         fun driver2(driver2: DocumentReference) = apply { this.driver2 = driver2 }
         fun points(points: Int) = apply { this.points = points }
         fun position(position: Int) = apply { this.position = position }
-        fun fantasyPrice(fantasyPrice: Int) = apply { this.fantasyPrice = fantasyPrice }
+        fun fantasyPrice(fantasyPrice: Float) = apply { this.fantasyPrice = fantasyPrice }
         fun imgRef(imgRef: String) = apply { this.imgRef = imgRef }
         fun build() = Constructor(
             id,

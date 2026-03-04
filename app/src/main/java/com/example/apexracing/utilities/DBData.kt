@@ -40,7 +40,8 @@ object DBData {
                         nationality = doc.getString("nationality") ?: "",
                         permanentNumber = (doc.getLong("permanentNumber") ?: 0L).toInt(),
                         points = (doc.getLong("points") ?: 0L).toInt(),
-                        position = (doc.getLong("position") ?: 0L).toInt()
+                        position = (doc.getLong("position") ?: 0L).toInt(),
+                        fantasyPrice = (doc.getDouble("fantasyPrice") ?: 0L).toFloat()
                     ).build()
 
                 }.sortedBy { it.position }
@@ -62,7 +63,9 @@ object DBData {
                         name = doc.getString("name") ?: "",
                         nationality = doc.getString("nationality") ?: "",
                         points = (doc.getLong("points") ?: 0L).toInt(),
-                        position = (doc.getLong("position") ?: 0L).toInt()
+                        position = (doc.getLong("position") ?: 0L).toInt(),
+                        fantasyPrice = (doc.getDouble("fantasyPrice") ?: 0L).toFloat()
+
                     ).build()
                 }.sortedBy { it.position }
 

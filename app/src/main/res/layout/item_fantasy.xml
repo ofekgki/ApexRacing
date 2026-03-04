@@ -1,0 +1,77 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="2dp"
+    app:strokeColor="@color/black">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/itemImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/f1logo"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/itemImage"
+            android:layout_marginStart="@dimen/default_small_margin"
+            tools:text="McLaren"
+            android:textStyle="bold"
+            android:textSize="@dimen/medium_text_card"
+            android:textColor="@color/black"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemName"
+            android:layout_toEndOf="@+id/itemImage"
+            android:layout_marginHorizontal="@dimen/default_fragment_margin"
+            tools:text="0 Pts"
+            android:textColor="@color/black"
+            android:textSize="@dimen/small_text_card" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/addButton"
+            android:layout_marginEnd="@dimen/default_fragment_margin"
+            tools:text="$28.9M"
+            android:textStyle="bold"
+            android:textSize="@dimen/big_text_card"
+            android:textColor="@color/black"
+            />
+
+        <!-- Add Button -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/addButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_fantasy_add_button"
+            android:src="@drawable/ic_add"
+            android:tint="@color/white"
+            android:padding="@dimen/default_small_margin"
+            />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

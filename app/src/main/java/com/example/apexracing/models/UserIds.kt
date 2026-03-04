@@ -1,15 +1,14 @@
 package com.example.apexracing.models
 
 data class UserIds(
+    val id: String = "",
     val username: String = "",
     val firstName: String = "",
     val lastName: String = "",
     val email: String = "",
-    val fantasyBudget: Int = 100,
-    val fantasyDriver1: String = "",
-    val fantasyDriver2: String = "",
-    val fantasyTeam1: String = "",
-    val fantasyTeam2: String = "",
+    val fantasyBudget: Float = 100F,
+    val fantasyDriverIds: List<String> = listOf(),
+    val fantasyConstructorIds: List<String> = listOf(),
     val fantasyPoints: Int = 0,
     val favoriteDriver: String = "",
     val favoriteTeam: String = ""

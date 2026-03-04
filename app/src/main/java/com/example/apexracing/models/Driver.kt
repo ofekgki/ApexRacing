@@ -12,7 +12,7 @@ data class Driver (
     val nationality: String,
     val points: Int,
     val position: Int,
-    val fantasyPrice: Int?,
+    val fantasyPrice: Float,
     val imgRef: String,
 ) {
     fun getFullName(): String {
@@ -33,7 +33,7 @@ data class Driver (
         var nationality: String = "",
         var points: Int = 0,
         var position: Int = 0,
-        var fantasyPrice: Int = 0,
+        var fantasyPrice: Float = 0F,
         var imgRef: String = ""
 
     ) {
@@ -47,7 +47,7 @@ data class Driver (
         fun nationality(nationality: String) = apply { this.nationality = nationality }
         fun points(points: Int) = apply { this.points = points }
         fun position(position: Int) = apply { this.position = position }
-        fun fantasyPrice(fantasyPrice: Int) = apply { this.fantasyPrice = fantasyPrice }
+        fun fantasyPrice(fantasyPrice: Float) = apply { this.fantasyPrice = fantasyPrice }
         fun imgRef(imgRef: String) = apply { this.imgRef = imgRef }
 
         fun build() = Driver(
