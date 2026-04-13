@@ -17,7 +17,6 @@ import com.example.apexracing.adapters.FantasyPickAdapter
 import com.example.apexracing.databinding.FragmentFantasyMainBinding
 import com.example.apexracing.models.FantasyItem
 import com.example.apexracing.models.User
-import com.example.apexracing.models.UserIds
 import com.example.apexracing.models.UserViewModel
 import com.example.apexracing.models.UserViewModel.PickType
 import com.example.apexracing.utilities.DBData
@@ -26,22 +25,19 @@ import kotlinx.coroutines.launch
 
 class FantasyMain : Fragment() {
 
-    enum class Mode { DRIVERS, CONSTRUCTORS }
-
-    private val storageRef = FirebaseStorage.getInstance().reference
+    private enum class Mode { DRIVERS, CONSTRUCTORS }
 
     private lateinit var binding: FragmentFantasyMainBinding
     private val userVM: UserViewModel by activityViewModels()
+    private val storageRef = FirebaseStorage.getInstance().reference
 
     private lateinit var pickAdapter: FantasyPickAdapter
-
     private var mode: Mode = Mode.DRIVERS
-    private lateinit var uid: String
-    private lateinit var dto: UserIds
-
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentFantasyMainBinding.inflate(inflater, container, false)
         return binding.root
@@ -61,8 +57,11 @@ class FantasyMain : Fragment() {
                 userVM.state.collect { s ->
                     val ready = s as? UserViewModel.UserUiState.Ready ?: return@collect
                     val user = ready.user
-                    uid = ready.uid
-                    dto = ready.userIds
+
+                    pickAdapter.setSelectedItems(
+                        driverIds = ready.userIds.fantasyDriverIds,
+                        constructorIds = ready.userIds.fantasyConstructorIds
+                    )
 
                     bindBudget(user)
                     bindGrid(user)
@@ -77,7 +76,11 @@ class FantasyMain : Fragment() {
 
         pickAdapter = FantasyPickAdapter(
             onAddClicked = { item ->
-                userVM.pickFantasyItem(item.type, item.id, item.price)
+                userVM.toggleFantasyItem(
+                    type = item.type,
+                    pickedId = item.id,
+                    priceM = item.price ?: 0f
+                )
             }
         )
 
@@ -93,7 +96,7 @@ class FantasyMain : Fragment() {
         binding.fantasyCHPConstructors.setOnClickListener { showTeams() }
 
         binding.fantasyBTNSave.setOnClickListener {
-            userVM.saveUserIdsToRTDB(uid,dto)
+            userVM.saveFantasyTeam()
         }
     }
 
@@ -110,7 +113,7 @@ class FantasyMain : Fragment() {
                 type = PickType.DRIVER
             )
         }
-        android.util.Log.d("FantasyMain", "drivers items size = ${items.size}")
+
         pickAdapter.submitList(items)
     }
 
@@ -132,10 +135,12 @@ class FantasyMain : Fragment() {
     }
 
     private fun bindBudget(user: User) {
-        binding.budgetLBLRemainingValue.text = "$${"%.1f".format(user.fantasyBudget)}"
+        val budget = user.fantasyBudget ?: 0f
+        binding.budgetLBLRemainingValue.text = "$${"%.1f".format(budget)}"
 
         val pickedCount = user.fantasyDriver.size + user.fantasyConstructor.size
         binding.fantasyLBLAmount.text = "($pickedCount/5)"
+
         binding.budgetLBLUsed.text = "${user.getBudgetPercentage()}% Used"
         binding.budgetPRG.progress = user.getBudgetPercentage().toInt()
     }
@@ -148,62 +153,93 @@ class FantasyMain : Fragment() {
         val t1 = user.fantasyConstructor.getOrNull(0)
         val t2 = user.fantasyConstructor.getOrNull(1)
 
-        loadSlot(binding.fantasyIMGDriver1, d1?.imgRef)
-        loadSlot(binding.fantasyIMGDriver2, d2?.imgRef)
-        loadSlot(binding.fantasyIMGDriver3, d3?.imgRef)
+        loadSlot(binding.fantasyIMGDriver1, d1?.imgRef, true)
+        loadSlot(binding.fantasyIMGDriver2, d2?.imgRef, true)
+        loadSlot(binding.fantasyIMGDriver3, d3?.imgRef, true)
 
-        loadSlot(binding.fantasyIMGTeam1, t1?.imgRef)
-        loadSlot(binding.fantasyIMGTeam2, t2?.imgRef)
+        loadSlot(binding.fantasyIMGTeam1, t1?.imgRef, false)
+        loadSlot(binding.fantasyIMGTeam2, t2?.imgRef, false)
     }
 
-    private fun loadSlot(img: ImageView, url: String?) {
-        val path = url?.trim()?.removePrefix("/")?.takeIf { it.isNotBlank() }
-            ?: run {
-                img.setImageResource(R.drawable.thestig)
-                img.scaleType =
-                    if (mode == Mode.DRIVERS) ImageView.ScaleType.CENTER_CROP
-                    else ImageView.ScaleType.FIT_CENTER
-                return
-            }
+    private fun loadSlot(img: ImageView, path: String?, isDriver: Boolean) {
+        img.scaleType = if (isDriver) {
+            ImageView.ScaleType.CENTER_CROP
+        } else {
+            ImageView.ScaleType.FIT_CENTER
+        }
 
-        storageRef.child(path).downloadUrl
+        val cleanPath = path?.trim()?.removePrefix("/")
+
+        if (cleanPath.isNullOrBlank()) {
+            img.setImageResource(R.drawable.user_profile_blank)
+            return
+        }
+
+        storageRef.child(cleanPath).downloadUrl
             .addOnSuccessListener { uri ->
                 if (!isAdded) return@addOnSuccessListener
 
-                Glide.with(img)
+                val request = Glide.with(img)
                     .load(uri)
-                    .placeholder(R.drawable.thestig)
-                    .error(R.drawable.thestig)
-                    .centerCrop()
-                    .into(img)
+                    .placeholder(R.drawable.user_profile_blank)
+                    .error(R.drawable.user_profile_blank)
+
+                if (isDriver) {
+                    request.centerCrop()
+                } else {
+                    request.fitCenter()
+                }
+
+                request.into(img)
             }
             .addOnFailureListener {
-                img.setImageResource(R.drawable.thestig)
+                img.setImageResource(R.drawable.user_profile_blank)
             }
-
-        img.scaleType =
-            if (mode == Mode.DRIVERS) ImageView.ScaleType.CENTER_CROP
-            else ImageView.ScaleType.FIT_CENTER
     }
 
     private fun setupGridRemove() {
-        binding.fantasyIMGDriver1.setOnLongClickListener { removeDriverAt(0); true }
-        binding.fantasyIMGDriver2.setOnLongClickListener { removeDriverAt(1); true }
-        binding.fantasyIMGDriver3.setOnLongClickListener { removeDriverAt(2); true }
+        binding.fantasyIMGDriver1.setOnLongClickListener {
+            removeDriverAt(0)
+            true
+        }
+        binding.fantasyIMGDriver2.setOnLongClickListener {
+            removeDriverAt(1)
+            true
+        }
+        binding.fantasyIMGDriver3.setOnLongClickListener {
+            removeDriverAt(2)
+            true
+        }
 
-        binding.fantasyIMGTeam1.setOnLongClickListener { removeTeamAt(0); true }
-        binding.fantasyIMGTeam2.setOnLongClickListener { removeTeamAt(1); true }
+        binding.fantasyIMGTeam1.setOnLongClickListener {
+            removeTeamAt(0)
+            true
+        }
+        binding.fantasyIMGTeam2.setOnLongClickListener {
+            removeTeamAt(1)
+            true
+        }
     }
 
     private fun removeDriverAt(index: Int) {
         val ready = userVM.state.value as? UserViewModel.UserUiState.Ready ?: return
         val driver = ready.user.fantasyDriver.getOrNull(index) ?: return
-        userVM.removeFantasyItem(PickType.DRIVER, driver.id, driver.fantasyPrice)
+
+        userVM.removeFantasyItem(
+            type = PickType.DRIVER,
+            removeId = driver.id,
+            priceM = driver.fantasyPrice ?: 0f
+        )
     }
 
     private fun removeTeamAt(index: Int) {
         val ready = userVM.state.value as? UserViewModel.UserUiState.Ready ?: return
         val team = ready.user.fantasyConstructor.getOrNull(index) ?: return
-        userVM.removeFantasyItem(PickType.CONSTRUCTOR, team.id, team.fantasyPrice)
+
+        userVM.removeFantasyItem(
+            type = PickType.CONSTRUCTOR,
+            removeId = team.id,
+            priceM = team.fantasyPrice ?: 0f
+        )
     }
 }

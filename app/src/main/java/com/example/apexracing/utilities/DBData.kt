@@ -4,8 +4,10 @@ import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
+import com.example.apexracing.models.Circuit
 import com.example.apexracing.models.Constructor
 import com.example.apexracing.models.Driver
+import java.util.Date
 
 object DBData {
 
@@ -14,6 +16,10 @@ object DBData {
         private set
     var teams: List<Constructor> = emptyList()
         private set
+
+    var circuits: List<Circuit> = emptyList()
+        private set
+
 
     private var teamMap: Map<String, Constructor> = emptyMap()
 
@@ -72,7 +78,32 @@ object DBData {
                 teamMap = teams.associateBy { it.id }
             }
 
-        return Tasks.whenAllSuccess<Any>(driversTask, teamsTask)
+        val racesTask = db.collection(Constants.FIRESTORE.SEASONS)
+            .document("2026")
+            .collection(Constants.FIRESTORE.CIRCUITS)
+            .get()
+            .continueWith { task ->
+                val snap = task.result ?: throw task.exception ?: Exception("Circuit task failed")
+                circuits = snap.documents.map { doc ->
+                    Circuit.Builder(
+                        id = doc.id,
+                        circuitName = doc.getString("circuitName"),
+                        displayName = doc.getString("displayName"),
+                        city = doc.getString("city") ?: "",
+                        country = doc.getString("country") ?: "",
+                        layoutRef = doc.getString("layoutRef") ?: "",
+                        location = doc.getGeoPoint("location"),
+                        startTime = (doc.getDate("startTime") ?: Date()),
+                        round = (doc.getLong("round") ?: 0L).toInt(),
+                        flagRef = (doc.getString("flagRef") ?: ""),
+                        skylineRef = (doc.getString("skylineRef") ?: "")
+
+                    ).build()
+                }.sortedBy { it.round }
+
+            }
+
+        return Tasks.whenAllSuccess<Any>(driversTask, teamsTask,racesTask)
             .continueWith { t ->
                 if (!t.isSuccessful) {
                     Log.e("DBData", "Preload failed", t.exception)
@@ -82,4 +113,11 @@ object DBData {
             }
     }
 
+    fun getNextRace(): Circuit? {
+        val now = Date()
+
+        return circuits
+            .sortedBy { it.startTime }
+            .firstOrNull { it.startTime.after(now)}
+    }
 }

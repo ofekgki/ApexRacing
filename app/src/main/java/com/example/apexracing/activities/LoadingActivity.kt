@@ -22,8 +22,7 @@ class LoadingActivity : AppCompatActivity() {
         startLogoAnimation()
 
         DBData.preloadAndWait()
-            .addOnSuccessListener { goNext()
-            }
+            .addOnSuccessListener { goNext() }
             .addOnFailureListener { finish() }
     }
 

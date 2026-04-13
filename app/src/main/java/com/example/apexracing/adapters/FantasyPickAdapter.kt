@@ -2,11 +2,13 @@ package com.example.apexracing.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apexracing.R
 import com.example.apexracing.databinding.ItemFantasyBinding
 import com.example.apexracing.models.FantasyItem
+import com.example.apexracing.models.UserViewModel
 import com.google.firebase.storage.FirebaseStorage
 
 class FantasyPickAdapter(
@@ -18,6 +20,8 @@ class FantasyPickAdapter(
 
     private val storageRef = FirebaseStorage.getInstance().reference
 
+    private var selectedDriverIds: Set<String> = emptySet()
+    private var selectedConstructorIds: Set<String> = emptySet()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val binding = ItemFantasyBinding.inflate(
@@ -28,36 +32,80 @@ class FantasyPickAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val item = items[position]
+
         with(holder.binding) {
             itemName.text = item.name
-            itemPoints.text = "%d Pts".format(item.points)
-            itemPrice.text = "$%.1fM".format(item.price)
+            itemPoints.text = "${item.points} Pts"
+            itemPrice.text = "$%.1fM".format(item.price ?: 0f)
 
-            val path = item.imageUrl.trim().removePrefix("/")
-            if (path.isBlank()) {
-                itemImage.setImageResource(R.drawable.thestig)
-            } else {
-                storageRef.child(path).downloadUrl
-                    .addOnSuccessListener { uri ->
-                        Glide.with(holder.binding.root)
-                            .load(uri)
-                            .placeholder(R.drawable.thestig)
-                            .error(R.drawable.thestig)
-                            .into(itemImage)
-                    }
-                    .addOnFailureListener {
-                        itemImage.setImageResource(R.drawable.thestig)
-                    }
+            val isSelected = when (item.type) {
+                UserViewModel.PickType.DRIVER -> selectedDriverIds.contains(item.id)
+                UserViewModel.PickType.CONSTRUCTOR -> selectedConstructorIds.contains(item.id)
             }
-            addButton.setOnClickListener { onAddClicked(item) }
+
+            addButton.setImageResource(
+                if (isSelected) R.drawable.ic_remove else R.drawable.ic_add
+            )
+
+            bindImage(
+                imageView = itemImage,
+                path = item.imageUrl,
+                isDriver = item.type == UserViewModel.PickType.DRIVER
+            )
+
+            addButton.setOnClickListener {
+                onAddClicked(item)
+            }
         }
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount(): Int = items.size
 
     fun submitList(newItems: List<FantasyItem>) {
         items = newItems
         notifyDataSetChanged()
     }
-}
 
+    fun setSelectedItems(
+        driverIds: List<String>,
+        constructorIds: List<String>
+    ) {
+        selectedDriverIds = driverIds.toSet()
+        selectedConstructorIds = constructorIds.toSet()
+        notifyDataSetChanged()
+    }
+
+    private fun bindImage(imageView: ImageView, path: String?, isDriver: Boolean) {
+        imageView.scaleType = if (isDriver) {
+            ImageView.ScaleType.CENTER_CROP
+        } else {
+            ImageView.ScaleType.FIT_CENTER
+        }
+
+        val cleanPath = path?.trim()?.removePrefix("/")
+
+        if (cleanPath.isNullOrBlank()) {
+            imageView.setImageResource(R.drawable.thestig)
+            return
+        }
+
+        storageRef.child(cleanPath).downloadUrl
+            .addOnSuccessListener { uri ->
+                val request = Glide.with(imageView)
+                    .load(uri)
+                    .placeholder(R.drawable.thestig)
+                    .error(R.drawable.thestig)
+
+                if (isDriver) {
+                    request.centerCrop()
+                } else {
+                    request.fitCenter()
+                }
+
+                request.into(imageView)
+            }
+            .addOnFailureListener {
+                imageView.setImageResource(R.drawable.thestig)
+            }
+    }
+}

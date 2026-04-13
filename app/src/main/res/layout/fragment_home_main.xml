@@ -100,10 +100,10 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/home_IMG_race"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/view_monaco"
+                    android:src="@drawable/user_profile_blank"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -502,7 +502,7 @@
                     android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@id/home_IMG_driver"
                     app:layout_constraintTop_toTopOf="@id/home_IMG_driver"
-                    app:layout_constraintEnd_toStartOf="@id/home_IMG_driverArt"
+                    app:layout_constraintEnd_toStartOf="@id/home_IMG_Team"
                     android:layout_marginStart="12dp" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -511,10 +511,10 @@
                     android:layout_height="wrap_content"
                     android:text="Lewis Hamilton"
                     android:textColor="@color/white"
-                    android:textSize="22sp"
+                    android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="@id/home_TXT_team"
                     app:layout_constraintTop_toBottomOf="@id/home_TXT_team"
-                    app:layout_constraintEnd_toStartOf="@id/home_IMG_driverArt"
+                    app:layout_constraintEnd_toStartOf="@id/home_IMG_Team"
                     android:layout_marginTop="2dp" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -530,11 +530,11 @@
 
                 <!-- Right art -->
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/home_IMG_driverArt"
+                    android:id="@+id/home_IMG_Team"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:src="@drawable/f1car"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
                     android:alpha="0.7"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -547,10 +547,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:background="@drawable/bg_gradient_driver_overlay"
-                    app:layout_constraintTop_toTopOf="@id/home_IMG_driverArt"
-                    app:layout_constraintBottom_toBottomOf="@id/home_IMG_driverArt"
-                    app:layout_constraintStart_toStartOf="@id/home_IMG_driverArt"
-                    app:layout_constraintEnd_toEndOf="@id/home_IMG_driverArt" />
+                    app:layout_constraintTop_toTopOf="@id/home_IMG_Team"
+                    app:layout_constraintBottom_toBottomOf="@id/home_IMG_Team"
+                    app:layout_constraintStart_toStartOf="@id/home_IMG_Team"
+                    app:layout_constraintEnd_toEndOf="@id/home_IMG_Team" />
 
                 <!-- Bottom left stats -->
                 <com.google.android.material.textview.MaterialTextView
@@ -593,7 +593,7 @@
                     android:text="Last Race"
                     android:textColor="@color/white_70"
                     android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="@id/home_IMG_driverArt"
+                    app:layout_constraintEnd_toEndOf="@id/home_IMG_Team"
                     app:layout_constraintBottom_toTopOf="@id/home_TXT_lastRaceVal"
                     android:layout_marginBottom="6dp"
                     android:layout_marginEnd="10dp" />
@@ -605,7 +605,7 @@
                     android:text="P5"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@id/home_IMG_driverArt"
+                    app:layout_constraintEnd_toEndOf="@id/home_IMG_Team"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginEnd="10dp" />
 
