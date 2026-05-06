@@ -17,12 +17,10 @@ import com.example.apexracing.databinding.FragmentHomeMainBinding
 import com.example.apexracing.models.Circuit
 import com.example.apexracing.models.User
 import com.example.apexracing.models.UserViewModel
-import com.example.apexracing.utilities.DBData
 import com.example.apexracing.utilities.DBData.getNextRace
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
 import java.util.Date
-import java.util.Locale
 import java.util.Locale.getDefault
 import kotlin.getValue
 
