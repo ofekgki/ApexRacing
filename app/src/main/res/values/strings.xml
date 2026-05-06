@@ -36,8 +36,18 @@
     <string name="team_management">Team Management</string>
     <string name="target_95">Target: 95%</string>
     <string name="my_grid">My Grid</string>
-    <string name="avaliable_options">Avaliable Options</string>
+    <string name="avaliable_options">Available Options</string>
     <string name="m">M</string>
+    <string name="select_season">Select Season</string>
+    <string name="_2026">2026</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pos">POS</string>
+    <string name="driver">DRIVER</string>
+    <string name="pts">PTS</string>
+    <string name="constructor">CONSTRUCTOR</string>
+    <string name="driver_name">DRIVER NAME</string>
+    <string name="team_name">TEAM NAME</string>
+    <string name="num">NUM</string>
 
 
 </resources>

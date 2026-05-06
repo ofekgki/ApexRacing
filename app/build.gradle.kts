@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 
     // Firebase
 
@@ -75,7 +76,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
 
-    // Glide + Lottie
+    // Glide + Lottie + MPAndroidChart
 
     implementation(libs.glide)
     implementation(libs.androidx.core.splashscreen)
