@@ -57,6 +57,8 @@
     <string name="your_driver">Your Driver</string>
     <string name="season_rank">Season Rank</string>
     <string name="last_race">Last Race</string>
+    <string name="upload_profile_picture">Upload Profile Picture</string>
+    <string name="profile">Profile</string>
 
 
 </resources>

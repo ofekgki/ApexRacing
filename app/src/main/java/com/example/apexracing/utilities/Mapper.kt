@@ -33,7 +33,8 @@ object Mapper {
             fantasyConstructor = fantasyTeams,
             fantasyPoints = dto.fantasyPoints,
             favoriteDriver = DBData.drivers.find { it.id == dto.favoriteDriver },
-            favoriteTeam = DBData.teams.find { it.id == dto.favoriteTeam }
+            favoriteTeam = DBData.teams.find { it.id == dto.favoriteTeam },
+            imgRef = dto.imgRef
 
         )
         return user

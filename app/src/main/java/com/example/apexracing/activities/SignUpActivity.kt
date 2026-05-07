@@ -98,6 +98,7 @@ class SignUpActivity : AppCompatActivity() {
                     "favoriteDriver" to fav.driverId,
                     "favoriteTeam" to fav.teamId,
                     "fantasyPoints" to 0,
+                    "imgRef" to "",
                     "createdAt" to System.currentTimeMillis()
                 )
 

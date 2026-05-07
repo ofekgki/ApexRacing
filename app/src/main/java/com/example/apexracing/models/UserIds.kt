@@ -11,5 +11,6 @@ data class UserIds(
     val fantasyConstructorIds: List<String> = listOf(),
     val fantasyPoints: Int = 0,
     val favoriteDriver: String = "",
-    val favoriteTeam: String = ""
+    val favoriteTeam: String = "",
+    val imgRef: String = ""
 )

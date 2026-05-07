@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Profile"
+        android:text="@string/profile"
         android:textSize="@dimen/page_name_default_text_size"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -161,7 +161,17 @@
         app:chipBackgroundColor="@color/background_chip_logout_color"
         app:chipSurfaceColor="@color/background_chip_color"
         />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="@id/guideline"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:paddingHorizontal="@dimen/default_small_margin"
 
+    >
     <com.google.android.material.button.MaterialButton
         android:id="@+id/profile_BTN_fav"
         android:layout_width="wrap_content"
@@ -169,11 +179,23 @@
         android:backgroundTint="@color/grey_inline"
         android:text="@string/change_favorite"
         android:textColor="@color/black"
-        android:textSize="@dimen/default_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        android:textSize="@dimen/small_text_card"
+        android:layout_marginEnd="@dimen/default_small_margin"
+        android:layout_weight="1"
 
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_BTN_Picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/grey_inline"
+        android:text="@string/upload_profile_picture"
+        android:textColor="@color/black"
+        android:textSize="@dimen/small_text_card"
+        android:layout_weight="1"
+        />
+</LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

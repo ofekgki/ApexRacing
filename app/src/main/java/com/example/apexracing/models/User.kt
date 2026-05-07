@@ -11,7 +11,8 @@ data class User(
     val fantasyConstructor: List<Constructor> = listOf(),
     val fantasyPoints: Int,
     val favoriteDriver: Driver?,
-    val favoriteTeam: Constructor?
+    val favoriteTeam: Constructor?,
+    val imgRef: String
 ){
 
 fun getGridNum(): Int {
