@@ -2,10 +2,12 @@ package com.example.apexracing.ui.home
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -17,7 +19,9 @@ import com.example.apexracing.databinding.FragmentHomeMainBinding
 import com.example.apexracing.models.Circuit
 import com.example.apexracing.models.User
 import com.example.apexracing.models.UserViewModel
+import com.example.apexracing.utilities.DBData
 import com.example.apexracing.utilities.DBData.getNextRace
+import com.example.apexracing.utilities.UtilitiesFunctions
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -67,7 +71,30 @@ class HomeMain : Fragment() {
                         binding.homeTXTTrack.text = "📍Space"
                     }
 
+                    DBData.updateFantasyScore(user.fantasyDriver,
+                        user.fantasyConstructor)
+
                     binding.homeTXTPointsValue.text = user.fantasyPoints.toString()
+
+                    DBData.getUserFantasyRank(
+                        onResult = { rank, total ->
+                            binding.homeTXTRankValue.text = "$rank" + UtilitiesFunctions()
+                                                                        .getNumFollowing(rank)
+
+                            val topPercent =
+                                ((rank.toFloat() - 1f) / total.toFloat()) * 100f
+
+                            val displayPercent =
+                                maxOf(1, topPercent.toInt())
+
+                            binding.homeBADGERankDelta.text =
+                                "Top $displayPercent%" },
+
+                        onError = {
+                            Log.e("Fantasy Rank", "Failed to get rank", it)
+                        }
+                    )
+
 
                     user.favoriteDriver?.let { driver ->
                          driver.constructor?.get()?.addOnSuccessListener { team ->
@@ -76,6 +103,15 @@ class HomeMain : Fragment() {
                         binding.homeTXTDriverName.text = driver.getFullName()
                         binding.homeTXTSeasonPts.text = "%3d Pts".format(driver.points)
                         binding.homeTXTSeasonRankVal.text = "P%2d".format(driver.position)
+                        driver.constructor?.get()
+                            ?.addOnSuccessListener { document ->
+
+                                val teamName = document.getString("name").orEmpty()
+                                val driverColor = UtilitiesFunctions()
+                                    .getTeamColor(teamName)
+                                binding.homeTXTDriverNumber.setTextColor(driverColor.toColorInt())
+
+                            }
                         binding.homeTXTDriverNumber.text = driver.permanentNumber.toString()
 
                     }

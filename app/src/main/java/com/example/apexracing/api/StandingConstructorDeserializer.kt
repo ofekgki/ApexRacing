@@ -35,6 +35,7 @@ class StandingConstructorDeserializer : JsonDeserializer<List<FlatConstructorSta
             for (element in constructorStandingsArray) {
                 val item = element.asJsonObject
 
+
                 val position = item.get("position").asString.toInt()
                 val points = item.get("points").asString.toDouble().toInt()
 
@@ -42,10 +43,14 @@ class StandingConstructorDeserializer : JsonDeserializer<List<FlatConstructorSta
 
                 val teamName = constructorObj.get("name").asString
 
+                val id = constructorObj.get("constructorId").asString
+
+
                 val color = UtilitiesFunctions().getTeamColor(teamName)
 
                 parsedList.add(
                     FlatConstructorStanding(
+                        id = id,
                         points = points,
                         position = position,
                         name = teamName,

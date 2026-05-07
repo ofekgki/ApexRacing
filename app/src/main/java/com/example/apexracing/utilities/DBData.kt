@@ -7,6 +7,10 @@ import android.util.Log
 import com.example.apexracing.models.Circuit
 import com.example.apexracing.models.Constructor
 import com.example.apexracing.models.Driver
+import com.example.apexracing.models.FlatConstructorStanding
+import com.example.apexracing.models.FlatDriverStanding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.util.Date
 
 object DBData {
@@ -19,7 +23,6 @@ object DBData {
 
     var circuits: List<Circuit> = emptyList()
         private set
-
 
     private var teamMap: Map<String, Constructor> = emptyMap()
 
@@ -103,7 +106,7 @@ object DBData {
 
             }
 
-        return Tasks.whenAllSuccess<Any>(driversTask, teamsTask,racesTask)
+        return Tasks.whenAllSuccess<Any>(driversTask, teamsTask, racesTask)
             .continueWith { t ->
                 if (!t.isSuccessful) {
                     Log.e("DBData", "Preload failed", t.exception)
@@ -118,6 +121,107 @@ object DBData {
 
         return circuits
             .sortedBy { it.startTime }
-            .firstOrNull { it.startTime.after(now)}
+            .firstOrNull { it.startTime.after(now) }
+    }
+
+    fun updateDriversStatDB(drivers: List<FlatDriverStanding>) {
+        //function that update the points & position in firebase
+
+        val db = FirebaseFirestore.getInstance()
+
+        val batch = db.batch()
+
+        val driversRef = db.collection(Constants.FIRESTORE.SEASONS)
+            .document("2026")
+            .collection(Constants.FIRESTORE.DRIVERS)
+
+        for (driver in drivers) {
+            val driverRef = driversRef.document(driver.id)
+            batch.update(driverRef, "points", driver.points)
+            batch.update(driverRef, "position", driver.position)
+        }
+
+
+        batch.commit()
+    }
+
+    fun updateConstructorsStatDB(constructors: List<FlatConstructorStanding>) {
+
+
+        val db = FirebaseFirestore.getInstance()
+
+        val batch = db.batch()
+
+        val teamsRef = db.collection(Constants.FIRESTORE.SEASONS)
+            .document("2026")
+            .collection(Constants.FIRESTORE.CONSTRUCTORS)
+
+        for (team in constructors) {
+            val teamRef = teamsRef.document(team.id)
+            batch.update(teamRef, "points", team.points)
+            batch.update(teamRef, "position", team.position)
+        }
+
+        batch.commit()
+
+    }
+
+    fun updateFantasyScore(drivers: List<Driver>, constructors: List<Constructor>) {
+
+        var score = 0
+
+        for (driver in drivers) {
+            score += driver.points
+        }
+        for (constructor in constructors) {
+            score += constructor.points
+        }
+
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+        if (uid != null) {
+            FirebaseDatabase
+                .getInstance()
+                .getReference("users")
+                .child(uid)
+                .child("fantasyPoints")
+                .setValue(score)
+        }
+
+    }
+
+    fun getUserFantasyRank(
+        onResult: (rank: Int, totalUsers: Int) -> Unit,
+        onError: (Exception) -> Unit
+    ){
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+        FirebaseDatabase
+            .getInstance()
+            .getReference("users")
+            .orderByChild("fantasyPoints")
+            .get()
+            .addOnSuccessListener { dataSnapshot ->
+
+                val users = dataSnapshot.children.toList()
+
+                val sortedUsers = users.sortedByDescending {
+                    it.child("fantasyPoints").getValue(Int::class.java) ?: 0
+                }
+
+                val index = sortedUsers.indexOfFirst {
+                    it.key == uid
+                }
+
+                if (index != -1) {
+                    val rank = index + 1
+                    onResult(rank, sortedUsers.size)
+                }
+            }
+            .addOnFailureListener { error ->
+                onError(error)
+            }
+
     }
 }
+

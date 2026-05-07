@@ -12,6 +12,7 @@ import com.example.apexracing.adapters.ConstructorStandingAdapter
 import com.example.apexracing.api.RetrofitClient
 import com.example.apexracing.api.StandingConstructorDeserializer
 import com.example.apexracing.databinding.FragmentStatsConstructorsBinding
+import com.example.apexracing.utilities.DBData
 import com.example.apexracing.utilities.SharedStatsViewModel
 import kotlinx.coroutines.launch
 
@@ -64,6 +65,9 @@ class StatsConstructors : Fragment() {
 
                 println("Fetched ${constructors.size} constructors for year $year")
                 adapter.submitList(constructors)
+
+                if (year == "2026")
+                    DBData.updateConstructorsStatDB(constructors)
             }
             catch (e: Exception) {
                 println("Error fetching data: ${e.message}")

@@ -39,6 +39,8 @@ class StandingDriverDeserializer: JsonDeserializer<List<FlatDriverStanding>> {
 
                 val driverObj = item.getAsJsonObject("Driver")
 
+                val id = driverObj.get("driverId").asString
+
                 val fullName =
                     "${driverObj.get("givenName").asString} " +
                             "${driverObj.get("familyName").asString}"
@@ -50,6 +52,7 @@ class StandingDriverDeserializer: JsonDeserializer<List<FlatDriverStanding>> {
 
                 parsedList.add(
                     FlatDriverStanding(
+                        id = id,
                         points = points,
                         position = position,
                         fullName = fullName,

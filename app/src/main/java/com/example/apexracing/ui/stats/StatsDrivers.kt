@@ -12,6 +12,7 @@ import com.example.apexracing.adapters.DriverStandingAdapter
 import com.example.apexracing.api.RetrofitClient
 import com.example.apexracing.api.StandingDriverDeserializer
 import com.example.apexracing.databinding.FragmentStatsDriversBinding
+import com.example.apexracing.utilities.DBData
 import com.example.apexracing.utilities.SharedStatsViewModel
 import kotlinx.coroutines.launch
 
@@ -60,6 +61,9 @@ class StatsDrivers : Fragment() {
 
                 println("Fetched ${drivers.size} drivers for year $year")
                 adapter.submitList(drivers)
+
+                if (year == "2026")
+                    DBData.updateDriversStatDB(drivers)
             }
             catch (e: Exception) {
                 println("Error fetching data: ${e.message}")

@@ -41,4 +41,16 @@ class UtilitiesFunctions {
         }
         return color
     }
+
+        fun getNumFollowing(rank: Int): String {
+            var following: String
+            when (rank) {
+                1 -> following = "st"
+                2 -> following = "nd"
+                3 -> following = "rd"
+                else -> following = "th"
+            }
+            return following
+        }
+
 }
