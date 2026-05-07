@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.apexracing.adapters.ConstructorStandingAdapter
 import com.example.apexracing.api.RetrofitClient
+import com.example.apexracing.api.StandingConstructorDeserializer
 import com.example.apexracing.databinding.FragmentStatsConstructorsBinding
 import com.example.apexracing.utilities.SharedStatsViewModel
 import kotlinx.coroutines.launch
@@ -47,7 +48,7 @@ class StatsConstructors : Fragment() {
         adapter = ConstructorStandingAdapter()
         binding?.standingRecyclerView?.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = this.adapter
+            adapter = this@StatsConstructors.adapter
             setHasFixedSize(true)
         }
     }
@@ -55,7 +56,12 @@ class StatsConstructors : Fragment() {
     private fun loadConstructorStandings(year: String) {
         viewLifecycleOwner.lifecycleScope.launch {
             try {
-                val constructors = RetrofitClient.constructorsApiService.getConstructorStandings(year)
+                val json = RetrofitClient.constructorsApiService.getConstructorStandings(year)
+
+                val constructors = StandingConstructorDeserializer().parse(json)
+
+                adapter.submitList(constructors)
+
                 println("Fetched ${constructors.size} constructors for year $year")
                 adapter.submitList(constructors)
             }

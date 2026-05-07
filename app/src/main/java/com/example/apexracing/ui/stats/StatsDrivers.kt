@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.apexracing.adapters.DriverStandingAdapter
 import com.example.apexracing.api.RetrofitClient
+import com.example.apexracing.api.StandingDriverDeserializer
 import com.example.apexracing.databinding.FragmentStatsDriversBinding
 import com.example.apexracing.utilities.SharedStatsViewModel
 import kotlinx.coroutines.launch
@@ -44,7 +45,8 @@ class StatsDrivers : Fragment() {
         adapter = DriverStandingAdapter()
         binding?.standingRecyclerView?.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = this.adapter
+            adapter = this@StatsDrivers.adapter
+
             setHasFixedSize(true)
         }
     }
@@ -52,7 +54,10 @@ class StatsDrivers : Fragment() {
     private fun loadDriverStandings(year: String) {
         viewLifecycleOwner.lifecycleScope.launch {
             try {
-                val drivers = RetrofitClient.driversApiService.getDriverStandings(year)
+                val json = RetrofitClient.driversApiService.getDriverStandings(year)
+
+                val drivers = StandingDriverDeserializer().parse(json)
+
                 println("Fetched ${drivers.size} drivers for year $year")
                 adapter.submitList(drivers)
             }
