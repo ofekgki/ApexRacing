@@ -6,17 +6,17 @@ class UtilitiesFunctions {
         var color: String
         when (teamName){
 
-            "Mercedes" ->  color = "#75F1D3"
-            "McLaren" ->  color = "#ef8733"
-            "Ferrari" ->  color = "#D52E37"
-            "Red Bull" ->  color = "#4570C0"
-            "Alpine F1 Team" ->  color = "#479FE2"
-            "RB F1 Team" ->  color = "#7091f8"
-            "Williams" ->  color = "#3267D4"
-            "Audi" ->  color = "#EB4526"
-            "Haas F1 Team" ->  color = "#DFE1E2"
-            "Cadillac F1 Team" ->  color = "#AAAADD"
-            "Aston Martin" ->  color = "#4B9774"
+            "Mercedes" , "mercedes" ->  color = "#75F1D3"
+            "McLaren" , "mclaren" ->  color = "#ef8733"
+            "Ferrari" , "ferrari" ->  color = "#D52E37"
+            "Red Bull" , "red_bull" ->  color = "#4570C0"
+            "Alpine F1 Team" , "alpine" ->  color = "#479FE2"
+            "RB F1 Team" , "rb" ->  color = "#7091f8"
+            "Williams" , "williams" ->  color = "#3267D4"
+            "Audi" , "audi" ->  color = "#EB4526"
+            "Haas F1 Team" , "haas" ->  color = "#DFE1E2"
+            "Cadillac F1 Team" , "cadillac" ->  color = "#AAAADD"
+            "Aston Martin" , "aston_martin" ->  color = "#4B9774"
 
             "Alfa Romeo" -> color = "#B12039"
             "AlphaTauri" -> color = "#20394C"

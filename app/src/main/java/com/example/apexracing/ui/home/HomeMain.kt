@@ -106,7 +106,9 @@ class HomeMain : Fragment() {
                         driver.constructor?.get()
                             ?.addOnSuccessListener { document ->
 
-                                val teamName = document.getString("name").orEmpty()
+                                val teamName = document.id
+                                Log.d("HomeMain", "Team name: $teamName")
+                                Log.d("HomeMain", document.toString())
                                 val driverColor = UtilitiesFunctions()
                                     .getTeamColor(teamName)
                                 binding.homeTXTDriverNumber.setTextColor(driverColor.toColorInt())
