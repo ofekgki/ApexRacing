@@ -1,6 +1,5 @@
 package com.example.apexracing.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,23 +8,23 @@ import com.example.apexracing.databinding.ItemCalenderBinding
 import com.example.apexracing.models.*
 import com.google.firebase.storage.FirebaseStorage
 
-class CircuitAdapter(var races: List<Circuit> = emptyList())
-    : RecyclerView.Adapter<CircuitAdapter.CircuitViewHolder>() {
+class CircuitAdapter(var races: List<Circuit> = emptyList()) :
+    RecyclerView.Adapter<CircuitAdapter.CircuitViewHolder>() {
 
     val storageRef = FirebaseStorage.getInstance().reference
 
     override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
-        ): CircuitViewHolder {
-            val binding = ItemCalenderBinding
-                .inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            return CircuitViewHolder(binding)
-        }
+        parent: ViewGroup,
+        viewType: Int
+    ): CircuitViewHolder {
+        val binding = ItemCalenderBinding
+            .inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        return CircuitViewHolder(binding)
+    }
 
     override fun onBindViewHolder(holder: CircuitViewHolder, position: Int) {
         val circuit = getItem(position)
@@ -52,8 +51,8 @@ class CircuitAdapter(var races: List<Circuit> = emptyList())
     }
 
     fun getItem(position: Int): Circuit = races[position]
-        class CircuitViewHolder(val binding: ItemCalenderBinding):
-            RecyclerView.ViewHolder(binding.root)
+    class CircuitViewHolder(val binding: ItemCalenderBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 
-    }
+}

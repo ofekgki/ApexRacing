@@ -39,9 +39,9 @@ class HomeMain : Fragment() {
     private val storageRef = FirebaseStorage.getInstance().reference
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?
-                              , savedInstanceState: Bundle?): View
-    {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         binding = FragmentHomeMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -71,15 +71,17 @@ class HomeMain : Fragment() {
                         binding.homeTXTTrack.text = "📍Space"
                     }
 
-                    DBData.updateFantasyScore(user.fantasyDriver,
-                        user.fantasyConstructor)
+                    DBData.updateFantasyScore(
+                        user.fantasyDriver,
+                        user.fantasyConstructor
+                    )
 
                     binding.homeTXTPointsValue.text = user.fantasyPoints.toString()
 
                     DBData.getUserFantasyRank(
                         onResult = { rank, total ->
                             binding.homeTXTRankValue.text = "$rank" + UtilitiesFunctions()
-                                                                        .getNumFollowing(rank)
+                                .getNumFollowing(rank)
 
                             val topPercent =
                                 ((rank.toFloat() - 1f) / total.toFloat()) * 100f
@@ -88,7 +90,8 @@ class HomeMain : Fragment() {
                                 maxOf(1, topPercent.toInt())
 
                             binding.homeBADGERankDelta.text =
-                                "Top $displayPercent%" },
+                                "Top $displayPercent%"
+                        },
 
                         onError = {
                             Log.e("Fantasy Rank", "Failed to get rank", it)
@@ -97,8 +100,8 @@ class HomeMain : Fragment() {
 
 
                     user.favoriteDriver?.let { driver ->
-                         driver.constructor?.get()?.addOnSuccessListener { team ->
-                             binding.homeTXTTeam.text = team.getString("name")
+                        driver.constructor?.get()?.addOnSuccessListener { team ->
+                            binding.homeTXTTeam.text = team.getString("name")
                         }
                         binding.homeTXTDriverName.text = driver.getFullName()
                         binding.homeTXTSeasonPts.text = "%3d Pts".format(driver.points)
@@ -115,9 +118,6 @@ class HomeMain : Fragment() {
                         binding.homeTXTDriverNumber.text = driver.permanentNumber.toString()
 
                     }
-
-
-
 
 
                 }
@@ -148,7 +148,7 @@ class HomeMain : Fragment() {
         user.favoriteDriver?.constructor?.get()?.addOnSuccessListener { doc ->
             val imgRef = doc.getString("imgRef") ?: return@addOnSuccessListener
 
-            loadImage(imgRef,binding.homeIMGTeam)
+            loadImage(imgRef, binding.homeIMGTeam)
 
         }
     }

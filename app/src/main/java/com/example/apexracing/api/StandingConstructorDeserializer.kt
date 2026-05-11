@@ -10,7 +10,6 @@ import java.lang.reflect.Type
 class StandingConstructorDeserializer : JsonDeserializer<List<FlatConstructorStanding>> {
 
 
-
     override fun deserialize(
         json: JsonElement,
         typeOfT: Type,

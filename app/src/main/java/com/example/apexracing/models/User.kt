@@ -13,13 +13,13 @@ data class User(
     val favoriteDriver: Driver?,
     val favoriteTeam: Constructor?,
     val imgRef: String
-){
+) {
 
-fun getGridNum(): Int {
-    return fantasyDriver.size + fantasyConstructor.size
-}
+    fun getGridNum(): Int {
+        return fantasyDriver.size + fantasyConstructor.size
+    }
 
-    fun getBudgetPercentage(): Float{
-        return  100 - fantasyBudget
+    fun getBudgetPercentage(): Float {
+        return 100 - fantasyBudget
     }
 }

@@ -10,13 +10,14 @@ import com.example.apexracing.utilities.ValidationUtils
 
 class SignUpCredentialsFragment : Fragment() {
 
-data class SignUpCredentials(
-    val username: String,
-    val email: String,
-    val password: String,
-    val firstName: String,
-    val lastName: String
-)
+    data class SignUpCredentials(
+        val username: String,
+        val email: String,
+        val password: String,
+        val firstName: String,
+        val lastName: String
+    )
+
     private lateinit var binding: FragmentSignUpCredentialsBinding
 
 
@@ -39,7 +40,9 @@ data class SignUpCredentials(
 
         var ok = true
 
-        if (username.length < 3) { binding.signup1TILUsername.error = "Min 3 chars"; ok = false }
+        if (username.length < 3) {
+            binding.signup1TILUsername.error = "Min 3 chars"; ok = false
+        }
 
         val emailError = ValidationUtils.validateEmail(email)
         if (emailError != null) {
@@ -61,8 +64,12 @@ data class SignUpCredentials(
             ok = false
         }
 
-        if (first.isBlank()) { binding.signup1TILFirst.error = "Required"; ok = false }
-        if (last.isBlank()) { binding.signup1TILLast.error = "Required"; ok = false }
+        if (first.isBlank()) {
+            binding.signup1TILFirst.error = "Required"; ok = false
+        }
+        if (last.isBlank()) {
+            binding.signup1TILLast.error = "Required"; ok = false
+        }
 
         if (!ok) return null
 

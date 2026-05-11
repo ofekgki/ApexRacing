@@ -1,10 +1,11 @@
 package com.example.apexracing.api
+
 import com.example.apexracing.models.FlatDriverStanding
 import com.example.apexracing.utilities.UtilitiesFunctions
 import com.google.gson.*
 import java.lang.reflect.Type
 
-class StandingDriverDeserializer: JsonDeserializer<List<FlatDriverStanding>> {
+class StandingDriverDeserializer : JsonDeserializer<List<FlatDriverStanding>> {
 
 
     override fun deserialize(
@@ -68,4 +69,4 @@ class StandingDriverDeserializer: JsonDeserializer<List<FlatDriverStanding>> {
 
         return parsedList
     }
-    }
+}

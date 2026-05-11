@@ -2,7 +2,7 @@ package com.example.apexracing.models
 
 import com.google.firebase.firestore.DocumentReference
 
-data class Driver (
+data class Driver(
     val id: String = "",
     val code: String,
     val constructor: DocumentReference? = null,
@@ -40,7 +40,9 @@ data class Driver (
 
         fun id(id: String) = apply { this.id = id }
         fun code(code: String) = apply { this.code = code }
-        fun constructor(constructorRef: DocumentReference) = apply { this.constructor = constructor }
+        fun constructor(constructorRef: DocumentReference) =
+            apply { this.constructor = constructor }
+
         fun givenName(givenName: String) = apply { this.givenName = givenName }
         fun familyName(familyName: String) = apply { this.familyName = familyName }
         fun permanentNumber(permanentNumber: Int) = apply { this.permanentNumber = permanentNumber }
@@ -51,17 +53,17 @@ data class Driver (
         fun imgRef(imgRef: String) = apply { this.imgRef = imgRef }
 
         fun build() = Driver(
-        id,
-        code,
-        constructor,
-        givenName,
-        familyName,
-        permanentNumber,
-        nationality,
-        points,
-        position,
-        fantasyPrice,
-        imgRef
+            id,
+            code,
+            constructor,
+            givenName,
+            familyName,
+            permanentNumber,
+            nationality,
+            points,
+            position,
+            fantasyPrice,
+            imgRef
         )
 
 

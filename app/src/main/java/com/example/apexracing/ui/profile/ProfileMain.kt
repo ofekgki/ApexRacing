@@ -29,7 +29,7 @@ class ProfileMain : Fragment() {
     private val userVM: UserViewModel by activityViewModels()
     private var currentUserId: String? = null
 
-    private lateinit var pickImageLauncher : ActivityResultLauncher<String>
+    private lateinit var pickImageLauncher: ActivityResultLauncher<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +93,8 @@ class ProfileMain : Fragment() {
                         .load(uri)
                         .into(binding.profileIMGProfilePicture)
 
-                    uploadProfileImage(userId, uri)                }
+                    uploadProfileImage(userId, uri)
+                }
             }
     }
 
@@ -121,6 +122,7 @@ class ProfileMain : Fragment() {
                 Log.e("UploadImage", "Upload failed", e)
             }
     }
+
     private fun logout() {
         binding.profileCHPLogout.setOnClickListener {
 

@@ -27,8 +27,10 @@ class StatsDrivers : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentStatsDriversBinding.inflate(inflater,
-            container, false).also {
+        return FragmentStatsDriversBinding.inflate(
+            inflater,
+            container, false
+        ).also {
             binding = it
         }.root
     }
@@ -64,8 +66,7 @@ class StatsDrivers : Fragment() {
 
                 if (year == "2026")
                     DBData.updateDriversStatDB(drivers)
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 println("Error fetching data: ${e.message}")
             }
         }

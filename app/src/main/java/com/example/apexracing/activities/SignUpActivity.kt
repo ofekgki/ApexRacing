@@ -11,6 +11,7 @@ import com.example.apexracing.ui.signup.SignUpCredentialsFragment
 import com.example.apexracing.ui.signup.SignUpFavoritesFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding

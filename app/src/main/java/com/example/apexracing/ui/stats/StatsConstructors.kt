@@ -29,8 +29,10 @@ class StatsConstructors : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentStatsConstructorsBinding.inflate(inflater,
-            container, false).also {
+        return FragmentStatsConstructorsBinding.inflate(
+            inflater,
+            container, false
+        ).also {
             binding = it
         }.root
     }
@@ -68,8 +70,7 @@ class StatsConstructors : Fragment() {
 
                 if (year == "2026")
                     DBData.updateConstructorsStatDB(constructors)
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 println("Error fetching data: ${e.message}")
             }
         }

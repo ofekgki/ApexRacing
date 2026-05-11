@@ -4,10 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class SignUpPagerAdapter(activity: AppCompatActivity,
+class SignUpPagerAdapter(
+    activity: AppCompatActivity,
     private val step1: Fragment,
     private val step2: Fragment
-        ) : FragmentStateAdapter(activity) {
+) : FragmentStateAdapter(activity) {
 
     override fun getItemCount() = 2
 

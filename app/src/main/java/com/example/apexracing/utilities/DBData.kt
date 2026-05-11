@@ -193,7 +193,7 @@ object DBData {
     fun getUserFantasyRank(
         onResult: (rank: Int, totalUsers: Int) -> Unit,
         onError: (Exception) -> Unit
-    ){
+    ) {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
 
         FirebaseDatabase

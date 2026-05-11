@@ -85,7 +85,8 @@ class FantasyMain : Fragment() {
         )
 
         binding.fantasyRVDrivers.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = pickAdapter
             setHasFixedSize(true)
         }
@@ -185,12 +186,11 @@ class FantasyMain : Fragment() {
                     .error(R.drawable.user_profile_blank)
 
                 if (isDriver) {
-                    request.centerCrop()
+                    request.centerCrop().into(img)
                 } else {
-                    request.fitCenter()
+                    request.fitCenter().into(img)
                 }
 
-                request.into(img)
             }
             .addOnFailureListener {
                 img.setImageResource(R.drawable.user_profile_blank)

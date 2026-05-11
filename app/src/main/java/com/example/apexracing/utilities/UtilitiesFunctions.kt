@@ -1,7 +1,5 @@
 package com.example.apexracing.utilities
 
-import com.google.firebase.Timestamp
-
 
 class UtilitiesFunctions {
 
@@ -44,13 +42,11 @@ class UtilitiesFunctions {
         }
         return color
     }
-
-    fun getTimeSince(date: Timestamp): String {
+    fun getTimeSince(date: Long): String {
 
         val now = System.currentTimeMillis()
-        val time = date.toDate().time
 
-        val diff = now - time
+        val diff = now - date
 
         val seconds = diff / 1000
         val minutes = seconds / 60
@@ -70,7 +66,6 @@ class UtilitiesFunctions {
             else -> "${years}y ago"
         }
     }
-
 
         fun getNumFollowing(rank: Int): String {
             var following: String

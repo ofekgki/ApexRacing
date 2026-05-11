@@ -17,8 +17,7 @@ data class Circuit(
     var flagRef: String,
     var skylineRef: String
 
-)
-{
+) {
     constructor() : this(
         id = "",
         circuitName = "",
@@ -26,7 +25,7 @@ data class Circuit(
         city = "",
         country = "",
         layoutRef = "",
-        location = GeoPoint(0.0,0.0),
+        location = GeoPoint(0.0, 0.0),
         startTime = Date(),
         round = 0,
         flagRef = "",
