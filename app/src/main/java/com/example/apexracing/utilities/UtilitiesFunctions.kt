@@ -1,5 +1,8 @@
 package com.example.apexracing.utilities
 
+import com.google.firebase.Timestamp
+
+
 class UtilitiesFunctions {
 
     fun getTeamColor(teamName: String): String {
@@ -42,6 +45,33 @@ class UtilitiesFunctions {
         return color
     }
 
+    fun getTimeSince(date: Timestamp): String {
+
+        val now = System.currentTimeMillis()
+        val time = date.toDate().time
+
+        val diff = now - time
+
+        val seconds = diff / 1000
+        val minutes = seconds / 60
+        val hours = minutes / 60
+        val days = hours / 24
+        val weeks = days / 7
+        val months = days / 30
+        val years = days / 365
+
+        return when {
+            seconds < 60 -> "Just now"
+            minutes < 60 -> "${minutes}m ago"
+            hours < 24 -> "${hours}h ago"
+            days < 7 -> "${days}d ago"
+            weeks < 4 -> "${weeks}w ago"
+            months < 12 -> "${months}mo ago"
+            else -> "${years}y ago"
+        }
+    }
+
+
         fun getNumFollowing(rank: Int): String {
             var following: String
             when (rank) {
@@ -52,5 +82,6 @@ class UtilitiesFunctions {
             }
             return following
         }
+
 
 }

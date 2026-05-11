@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:padding="14dp">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/post_IMG_avatar"
             android:layout_width="42dp"
             android:layout_height="42dp"
@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/post_TXT_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             app:layout_constraintStart_toEndOf="@id/post_IMG_avatar"
             app:layout_constraintTop_toTopOf="@id/post_IMG_avatar" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/post_TXT_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
 
 
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/post_TXT_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -66,18 +66,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Optional image (set GONE if no image) -->
-        <ImageView
-            android:id="@+id/post_IMG_photo"
-            android:layout_width="0dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            android:background="#0B0B0F"
-            app:layout_constraintTop_toBottomOf="@id/post_TXT_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <View
             android:id="@+id/post_divider"
@@ -85,7 +73,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="12dp"
             android:background="#2A2A35"
-            app:layout_constraintTop_toBottomOf="@id/post_IMG_photo"
+            app:layout_constraintTop_toBottomOf="@id/post_TXT_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -101,7 +89,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/post_LBL_likesCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="XXX Likes"
+                android:textColor="@color/grey_inline"
+                android:gravity="center"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/post_BTN_like"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -111,25 +109,7 @@
                 android:gravity="center"
                 android:padding="10dp" />
 
-            <TextView
-                android:id="@+id/post_BTN_comment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="💬 Comment"
-                android:textColor="@color/grey_inline"
-                android:gravity="center"
-                android:padding="10dp" />
 
-            <TextView
-                android:id="@+id/post_BTN_share"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="🔁 Share"
-                android:textColor="@color/grey_inline" />
 
         </LinearLayout>
 
