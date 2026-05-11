@@ -89,24 +89,24 @@ class CommunityMain : Fragment() {
     }
 
 
-    private suspend fun uploadPost(userId: String, userName: String, postText: String) {
+private suspend fun uploadPost(userId: String, userName: String, postText: String) {
 
-        val postRef = rtdb.getReference("posts").push()
-        val postId = postRef.key ?: return
+    val postRef = rtdb.getReference("posts").push()
+    val postId = postRef.key ?: return
 
-        val post = Post(
-            postId = postId,
-            userId = userId,
-            userName = userName,
-            postText = postText,
-            time = System.currentTimeMillis(),
-            likes = 0
-        )
+    val post = Post(
+        postId = postId,
+        userId = userId,
+        userName = userName,
+        postText = postText,
+        time = System.currentTimeMillis(),
+        likes = 0
+    )
 
-        postRef.setValue(post).await()
+    postRef.setValue(post).await()
 
-        loadPostsFromFirebase()
-    }
+    loadPostsFromFirebase()
+}
 
 
     private fun loadPostsFromFirebase() {
@@ -162,22 +162,40 @@ class CommunityMain : Fragment() {
 
 
     private fun likePost(post: Post) {
-
         viewLifecycleOwner.lifecycleScope.launch {
             try {
+                val s = userVM.state.first {
+                    it is UserViewModel.UserUiState.Ready
+                } as UserViewModel.UserUiState.Ready
+
+                val currentUserId = s.uid
+
                 val postRef = rtdb
                     .getReference("posts")
                     .child(post.postId)
 
-                val newLikes = post.likes + 1
+                val snapshot = postRef.get().await()
+                val currentPost = snapshot.getValue(Post::class.java) ?: return@launch
 
-                postRef.child("likes").setValue(newLikes).await()
+                if (currentPost.likedBy.containsKey(currentUserId)) {
+                    Toast.makeText(requireContext(), "You already liked this post",
+                        Toast.LENGTH_SHORT).show()
+                    return@launch
+                }
+
+                val updates = mapOf<String, Any>(
+                    "likes" to currentPost.likes + 1,
+                    "likedBy/$currentUserId" to true
+                )
+
+                postRef.updateChildren(updates).await()
 
                 loadPostsFromFirebase()
 
             } catch (e: Exception) {
                 Log.e("CommunityMain", "Failed to like post", e)
-                Toast.makeText(requireContext(), "Failed to like post", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Failed to like post",
+                    Toast.LENGTH_SHORT).show()
             }
         }
     }

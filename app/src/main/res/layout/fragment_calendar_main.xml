@@ -33,13 +33,13 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/calendar_LBL_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="Australian GP"
             android:textColor="@color/white"
             android:textSize="@dimen/big_text_card"
             android:textStyle="bold"
-            android:paddingStart="@dimen/big_text_card"
+            android:layout_marginStart="@dimen/default_small_margin"
             android:layout_marginTop="@dimen/default_small_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calendar_LBL_round"
