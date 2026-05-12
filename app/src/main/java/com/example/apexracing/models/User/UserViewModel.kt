@@ -94,7 +94,10 @@ class UserViewModel : ViewModel() {
 
         val currentBudget = user.fantasyBudget ?: 0f
         val newBudget = currentBudget - priceM
-        if (newBudget < 0f) return
+        if (newBudget < 0f) {
+
+            return
+        }
 
         val pickedDriver =
             if (type == PickType.DRIVER) DBData.drivers.find { it.id == pickedId } else null

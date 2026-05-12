@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -76,10 +77,35 @@ class FantasyMain : Fragment() {
 
         pickAdapter = FantasyPickAdapter(
             onAddClicked = { item ->
+
+                val ready = userVM.state.value as? UserViewModel.UserUiState.Ready
+                    ?: return@FantasyPickAdapter
+
+                val alreadyPicked = when (item.type) {
+                    PickType.DRIVER ->
+                        ready.userIds.fantasyDriverIds.contains(item.id)
+
+                    PickType.CONSTRUCTOR ->
+                        ready.userIds.fantasyConstructorIds.contains(item.id)
+                }
+
+                val currentBudget = ready.user.fantasyBudget ?: 0f
+                val itemPrice = item.price ?: 0f
+
+                if (!alreadyPicked && currentBudget < itemPrice) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Not enough budget",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    return@FantasyPickAdapter
+                }
+
                 userVM.toggleFantasyItem(
                     type = item.type,
                     pickedId = item.id,
-                    priceM = item.price ?: 0f
+                    priceM = itemPrice
                 )
             }
         )
@@ -142,7 +168,8 @@ class FantasyMain : Fragment() {
         val pickedCount = user.fantasyDriver.size + user.fantasyConstructor.size
         binding.fantasyLBLAmount.text = "($pickedCount/5)"
 
-        binding.budgetLBLUsed.text = "${user.getBudgetPercentage()}% Used"
+        binding.budgetLBLUsed.text =
+            "${"%.2f".format(user.getBudgetPercentage())}% Used"
         binding.budgetPRG.progress = user.getBudgetPercentage().toInt()
     }
 
