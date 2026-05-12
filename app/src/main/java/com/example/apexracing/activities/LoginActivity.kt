@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         // If already logged in -> go main
         if (auth.currentUser != null) {
+            Toast.makeText(this, "Welcome back", Toast.LENGTH_SHORT).show()
             goToMain()
         }
     }

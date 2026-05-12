@@ -24,7 +24,6 @@ class CalendarMain : Fragment() {
 
     private var countdownRunnable: Runnable? = null
 
-
     private val handler = Handler(getMainLooper())
     private lateinit var binding: FragmentCalendarMainBinding
     private val db = Firebase.firestore
@@ -41,7 +40,7 @@ class CalendarMain : Fragment() {
     }
 
 
-    private fun loadDataFromFirestore() {
+    private fun loadDataFromFirestore() { // load the races from the DB
 
         val circuitCollectionRef =
             db.collection(Constants.FIRESTORE.SEASONS)
@@ -79,7 +78,7 @@ class CalendarMain : Fragment() {
         return list.firstOrNull { it.startTime.after(now) } ?: list.lastOrNull()
     }
 
-    private fun bindHero(c: Circuit) {
+    private fun bindHero(c: Circuit) { // bind the closet race to the UI
         binding.calendarLBLRound.text = "Round %02d".format(c.round)
         binding.calendarLBLTitle.text = c.displayName
         binding.calendarLBLLocation.text = c.city

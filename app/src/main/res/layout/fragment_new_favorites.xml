@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/signup2_LBL_driver"
+            android:id="@+id/newFav_LBL_driver"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/favorite_driver"
@@ -27,19 +27,19 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/signup2_RV_drivers"
+            android:id="@+id/newFav_RV_driver"
             android:layout_width="0dp"
             android:layout_height="220dp"
             android:layout_marginTop="@dimen/default_big_margin"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
-            app:layout_constraintTop_toBottomOf="@id/signup2_LBL_driver"
+            app:layout_constraintTop_toBottomOf="@id/newFav_LBL_driver"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/signup2_LBL_team"
+            android:id="@+id/newFav_LBL_team"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/favorite_team"
@@ -47,32 +47,32 @@
             android:textSize="@dimen/medium_text_card"
             android:textColor="@color/white"
             android:layout_marginTop="@dimen/default_big_margin"
-            app:layout_constraintTop_toBottomOf="@id/signup2_RV_drivers"
+            app:layout_constraintTop_toBottomOf="@id/newFav_RV_driver"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/signup2_RV_teams"
+            android:id="@+id/newFav_RV_teams"
             android:layout_width="0dp"
             android:layout_height="220dp"
             android:layout_marginTop="10dp"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
-            app:layout_constraintTop_toBottomOf="@id/signup2_LBL_team"
+            app:layout_constraintTop_toBottomOf="@id/newFav_LBL_team"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="12dp"/>
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/signup2_LBL_hint"
+            android:id="@+id/newFav_LBL_hint"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/pick_1_driver_1_team_to_finish"
             android:textColor="@color/grey_inline"
             android:textSize="@dimen/medium_text_card"
             android:layout_marginTop="@dimen/default_big_margin"
-            app:layout_constraintTop_toBottomOf="@id/signup2_RV_teams"
+            app:layout_constraintTop_toBottomOf="@id/newFav_RV_teams"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

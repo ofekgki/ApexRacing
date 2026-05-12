@@ -22,13 +22,13 @@ class StatsMain : Fragment(R.layout.fragment_stats_main) {
         binding = FragmentStatsMainBinding.bind(view)
 
         setupSeasonDropdown()
-        binding!!.explorePAGER.adapter = object : FragmentStateAdapter(this) {
+        binding!!.statPAGER.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount() = 2
             override fun createFragment(position: Int): Fragment =
                 if (position == 0) StatsDrivers() else StatsConstructors()
         }
 
-        TabLayoutMediator(binding!!.exploreTAB, binding!!.explorePAGER) { tab, position ->
+        TabLayoutMediator(binding!!.statTab, binding!!.statPAGER) { tab, position ->
             tab.text = if (position == 0) "Drivers" else "Constructors"
         }.attach()
     }
@@ -36,10 +36,14 @@ class StatsMain : Fragment(R.layout.fragment_stats_main) {
     private fun setupSeasonDropdown() {
         val yearsList = (2026 downTo 1950).map { it.toString() }
         val adapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, yearsList)
+            ArrayAdapter(requireContext(),
+                android.R.layout.simple_dropdown_item_1line, yearsList)
         binding?.statsSeasonSelector?.setAdapter(adapter)
+
         binding?.statsSeasonSelector?.setOnItemClickListener { parent, _, position, _ ->
+
             val selectedYear = parent.getItemAtPosition(position).toString()
+
             sharedViewModel.updateYear(selectedYear)
         }
     }

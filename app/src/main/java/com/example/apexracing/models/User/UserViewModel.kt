@@ -29,7 +29,7 @@ class UserViewModel : ViewModel() {
     private val _state = MutableStateFlow<UserUiState>(UserUiState.Idle)
     val state: StateFlow<UserUiState> = _state
 
-    fun loadUser(uid: String) {
+    fun loadUser(uid: String) { // load the user from the DB
         viewModelScope.launch {
             try {
                 _state.value = UserUiState.Loading
@@ -56,11 +56,9 @@ class UserViewModel : ViewModel() {
         }
     }
 
-    fun clear() {
-        _state.value = UserUiState.Idle
-    }
 
-    fun toggleFantasyItem(type: PickType, pickedId: String, priceM: Float) {
+    fun toggleFantasyItem(type: PickType, pickedId: String, priceM: Float) { // add/remove fantasy item to/from the user
+
         val ready = state.value as? UserUiState.Ready ?: return
 
         val alreadyPicked = when (type) {
@@ -75,7 +73,7 @@ class UserViewModel : ViewModel() {
         }
     }
 
-    fun pickFantasyItem(type: PickType, pickedId: String, priceM: Float) {
+    fun pickFantasyItem(type: PickType, pickedId: String, priceM: Float) {// add fantasy item to the user
         val ready = state.value as? UserUiState.Ready ?: return
         val dto = ready.userIds
         val user = ready.user
@@ -130,7 +128,7 @@ class UserViewModel : ViewModel() {
         )
     }
 
-    fun removeFantasyItem(type: PickType, removeId: String, priceM: Float) {
+    fun removeFantasyItem(type: PickType, removeId: String, priceM: Float) {// remove fantasy item from the user
         val ready = state.value as? UserUiState.Ready ?: return
         val dto = ready.userIds
         val user = ready.user
@@ -160,31 +158,6 @@ class UserViewModel : ViewModel() {
             PickType.CONSTRUCTOR ->
                 user.copy(fantasyConstructor = user.fantasyConstructor.filter { it.id != removeId })
         }.copy(fantasyBudget = newBudget)
-
-        _state.value = UserUiState.Ready(
-            user = newUser,
-            userIds = newDto,
-            uid = uid
-        )
-    }
-
-    fun clearFantasyGrid(capBudget: Float = 100.0f) {
-        val ready = state.value as? UserUiState.Ready ?: return
-        val dto = ready.userIds
-        val user = ready.user
-        val uid = ready.uid
-
-        val newDto = dto.copy(
-            fantasyDriverIds = emptyList(),
-            fantasyConstructorIds = emptyList(),
-            fantasyBudget = capBudget
-        )
-
-        val newUser = user.copy(
-            fantasyDriver = emptyList(),
-            fantasyConstructor = emptyList(),
-            fantasyBudget = capBudget
-        )
 
         _state.value = UserUiState.Ready(
             user = newUser,

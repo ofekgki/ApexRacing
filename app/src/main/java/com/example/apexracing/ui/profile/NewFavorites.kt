@@ -46,6 +46,7 @@ class NewFavorites : Fragment() {
 
         driversAdapter.submitList(DBData.drivers.sortedBy { it.position })
         teamsAdapter.submitList(DBData.teams.sortedBy { it.position })
+
         if (DBData.drivers.isEmpty() || DBData.teams.isEmpty()) {
             DBData.preloadAndWait().addOnSuccessListener {
                 driversAdapter.submitList(DBData.drivers.sortedBy { it.position })
@@ -103,10 +104,10 @@ class NewFavorites : Fragment() {
     private fun setupDrivers() {
         driversAdapter = FavoriteDriverAdapter { d ->
             selectedDriverId = d.id
-            binding.signup2LBLHint.text = "Selected driver: ${d.givenName} ${d.familyName}"
+            binding.newFavLBLHint.text = "Selected driver: ${d.givenName} ${d.familyName}"
         }
 
-        binding.signup2RVDrivers.apply {
+        binding.newFavRVDriver.apply {
             layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = driversAdapter
             setHasFixedSize(true)
@@ -115,10 +116,10 @@ class NewFavorites : Fragment() {
     private fun setupTeams() {
         teamsAdapter = FavoriteConstructorAdapter { t ->
             selectedTeamId = t.id
-            binding.signup2LBLHint.text = "Selected team: ${t.name}"
+            binding.newFavLBLHint.text = "Selected team: ${t.name}"
         }
 
-        binding.signup2RVTeams.apply {
+        binding.newFavRVTeams.apply {
             layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = teamsAdapter
             setHasFixedSize(true)
@@ -130,11 +131,11 @@ class NewFavorites : Fragment() {
         val t = selectedTeamId
 
         if (d == null) {
-            binding.signup2LBLHint.text = "Pick a driver to continue."
+            binding.newFavLBLHint.text = "Pick a driver to continue."
             return null
         }
         if (t == null) {
-            binding.signup2LBLHint.text = "Pick a team to continue."
+            binding.newFavLBLHint.text = "Pick a team to continue."
             return null
         }
         return FavoriteSelection(d, t)

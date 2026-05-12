@@ -2,6 +2,7 @@ package com.example.apexracing.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -23,7 +24,10 @@ class LoadingActivity : AppCompatActivity() {
 
         DBData.preloadAndWait()
             .addOnSuccessListener { goNext() }
-            .addOnFailureListener { finish() }
+            .addOnFailureListener { e ->
+                Log.d("LoadingActivity", "Error getting documents: ${e.message}")
+                finish()
+            }
     }
 
     private fun startLogoAnimation() {

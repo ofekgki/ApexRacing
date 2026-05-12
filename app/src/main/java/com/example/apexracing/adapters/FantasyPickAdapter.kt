@@ -96,16 +96,10 @@ class FantasyPickAdapter(
                     .placeholder( if(isDriver) R.drawable.thestig else R.drawable.f1logo)
                     .error(if(isDriver) R.drawable.thestig else R.drawable.f1logo)
 
-                if (isDriver) {
-                    request.centerCrop()
-                } else {
-                    request.fitCenter()
-                }
-
                 request.into(imageView)
             }
             .addOnFailureListener {
-                imageView.setImageResource(R.drawable.thestig)
+                imageView.setImageResource(if(isDriver) R.drawable.thestig else R.drawable.f1logo)
             }
     }
 }

@@ -78,7 +78,6 @@
                 android:layout_marginEnd="@dimen/default_small_margin"
                 android:layout_marginTop="@dimen/default_small_margin"
                 android:scaleType="fitCenter"
-                tools:src="@drawable/circuit_albertpark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/calendar_LBL_title" />
@@ -146,7 +145,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hours"
+                    android:text="@string/hours"
                     android:textColor="@color/grey_inline"
                     android:textSize="@dimen/small_text_card" />
             </LinearLayout>
@@ -169,7 +168,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Minutes"
+                    android:text="@string/minutes"
                     android:textColor="@color/grey_inline"
                     android:textSize="@dimen/small_text_card" />
             </LinearLayout>

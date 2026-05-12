@@ -21,6 +21,7 @@ import com.example.apexracing.models.User.User
 import com.example.apexracing.models.User.UserViewModel
 import com.example.apexracing.models.User.UserViewModel.PickType
 import com.example.apexracing.utilities.DBData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
 
@@ -124,6 +125,10 @@ class FantasyMain : Fragment() {
 
         binding.fantasyBTNSave.setOnClickListener {
             userVM.saveFantasyTeam()
+            Toast.makeText(this.context,
+                "Fantasy team saved", Toast.LENGTH_SHORT).show()
+
+            userVM.reloadUser(FirebaseAuth.getInstance().currentUser?.uid.toString())
         }
     }
 

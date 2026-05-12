@@ -221,5 +221,11 @@ class HomeMain : Fragment() {
             }
     }
 
+    override fun onDestroyView() {
+        timer?.cancel()
+        timer = null
+        super.onDestroyView()
+    }
+
 
 }
