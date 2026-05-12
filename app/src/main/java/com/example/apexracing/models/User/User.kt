@@ -1,4 +1,7 @@
-package com.example.apexracing.models
+package com.example.apexracing.models.User
+
+import com.example.apexracing.models.Constructor
+import com.example.apexracing.models.Driver
 
 data class User(
     val id: String = "",

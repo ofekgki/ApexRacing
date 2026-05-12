@@ -8,16 +8,21 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.example.apexracing.R
 import com.example.apexracing.adapters.PostAdapter
 import com.example.apexracing.databinding.FragmentCommunityMainBinding
 import com.example.apexracing.models.Post
-import com.example.apexracing.models.UserViewModel
+import com.example.apexracing.models.User.UserViewModel
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -50,6 +55,19 @@ class CommunityMain : Fragment() {
 
         loadPostsFromFirebase()
 
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                userVM.state
+                    .mapNotNull { it as? UserViewModel.UserUiState.Ready }
+                    .map { it.uid }
+                    .distinctUntilChanged() // אוסף רק כשקורה שינוי id
+                    .collect { uid ->
+                        loadProfileImage(uid)
+                    }
+            }
+        }
+
         binding.communityBTNPost.setOnClickListener {
 
             val text = binding.communityEDTPost.text.toString().trim()
@@ -64,12 +82,11 @@ class CommunityMain : Fragment() {
             }
 
             viewLifecycleOwner.lifecycleScope.launch {
-                val s = userVM.state.first {
+                val s = userVM.state.first { // לוקח מידע רק פעם אחת - כאשר לוחצים על post
                     it is UserViewModel.UserUiState.Ready
                 } as UserViewModel.UserUiState.Ready
                 val user = s.user
 
-                loadProfileImage(s.uid)
 
 
                 uploadPost(
@@ -80,10 +97,7 @@ class CommunityMain : Fragment() {
 
                 binding.communityEDTPost.text?.clear()
 
-
             }
-
-
         }
 
     }
@@ -107,7 +121,6 @@ private suspend fun uploadPost(userId: String, userName: String, postText: Strin
 
     loadPostsFromFirebase()
 }
-
 
     private fun loadPostsFromFirebase() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -142,16 +155,18 @@ private suspend fun uploadPost(userId: String, userName: String, postText: Strin
 
                 val imgRef = snapshot.getValue(String::class.java)
 
+                Log.d("IMG_REF", imgRef.toString())
+
                 if (!imgRef.isNullOrEmpty()) {
                     FirebaseStorage.getInstance()
-                        .reference
-                        .child(imgRef)
+                        .getReference(imgRef)
                         .downloadUrl
                         .addOnSuccessListener { uri ->
                             Glide.with(binding.root)
                                 .load(uri)
                                 .into(binding.communityIMGAvatar)
                         }
+
                 }
             }
             .addOnFailureListener { e ->
@@ -159,7 +174,6 @@ private suspend fun uploadPost(userId: String, userName: String, postText: Strin
                 Log.e("LoadImage", "Failed to load profile image", e)
             }
     }
-
 
     private fun likePost(post: Post) {
         viewLifecycleOwner.lifecycleScope.launch {

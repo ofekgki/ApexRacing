@@ -22,11 +22,30 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.apexracing.ui.profile.ProfileMain"
-        android:label="Profile"/>
+        android:label="Profile">
+
+        <action
+            android:id="@+id/action_profileMain_to_editFavoritesFragment"
+            app:destination="@id/editFavoritesFragment" />
+
+
+    </fragment>
+
 
     <fragment
         android:id="@+id/exploreFragment"
         android:name="com.example.apexracing.ui.explore.ExploreMain"
         android:label="Explore"/>
+
+    <fragment
+        android:id="@+id/editFavoritesFragment"
+        android:name="com.example.apexracing.ui.profile.NewFavorites"
+        android:label="Edit Favorites" >
+
+        <action
+            android:id="@+id/action_editFavoritesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
+    </fragment>
 
 </navigation>

@@ -1,7 +1,7 @@
 package com.example.apexracing.utilities
 
-import com.example.apexracing.models.User
-import com.example.apexracing.models.UserIds
+import com.example.apexracing.models.User.User
+import com.example.apexracing.models.User.UserIds
 
 object Mapper {
 

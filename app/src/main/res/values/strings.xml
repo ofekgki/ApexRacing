@@ -60,6 +60,8 @@
     <string name="upload_profile_picture">Upload Profile Picture</string>
     <string name="profile">Profile</string>
     <string name="what_do_you_want_to_share">What do you want to share?</string>
+    <string name="welcome_back">Welcome back,</string>
+    <string name="save_favorites">Save Favorites</string>
 
 
 </resources>

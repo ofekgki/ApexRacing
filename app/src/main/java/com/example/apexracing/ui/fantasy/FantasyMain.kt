@@ -16,9 +16,9 @@ import com.example.apexracing.R
 import com.example.apexracing.adapters.FantasyPickAdapter
 import com.example.apexracing.databinding.FragmentFantasyMainBinding
 import com.example.apexracing.models.FantasyItem
-import com.example.apexracing.models.User
-import com.example.apexracing.models.UserViewModel
-import com.example.apexracing.models.UserViewModel.PickType
+import com.example.apexracing.models.User.User
+import com.example.apexracing.models.User.UserViewModel
+import com.example.apexracing.models.User.UserViewModel.PickType
 import com.example.apexracing.utilities.DBData
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch

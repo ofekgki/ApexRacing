@@ -1,4 +1,4 @@
-package com.example.apexracing.models
+package com.example.apexracing.models.User
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -208,4 +208,10 @@ class UserViewModel : ViewModel() {
             }
         }
     }
+
+    fun reloadUser(uid: String) {
+        loadUser(uid)
+    }
 }
+
+

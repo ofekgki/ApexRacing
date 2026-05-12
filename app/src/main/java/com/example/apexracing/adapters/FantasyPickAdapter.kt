@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.apexracing.R
 import com.example.apexracing.databinding.ItemFantasyBinding
 import com.example.apexracing.models.FantasyItem
-import com.example.apexracing.models.UserViewModel
+import com.example.apexracing.models.User.UserViewModel
 import com.google.firebase.storage.FirebaseStorage
 
 class FantasyPickAdapter(

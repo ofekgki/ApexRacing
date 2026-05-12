@@ -13,11 +13,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.apexracing.R
 import com.example.apexracing.activities.WelcomeActivity
 import com.example.apexracing.databinding.FragmentProfileMainBinding
-import com.example.apexracing.models.UserViewModel
+import com.example.apexracing.models.User.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -69,15 +70,19 @@ class ProfileMain : Fragment() {
 
 
                 }
-            }
 
+                binding.profileBTNFav.setOnClickListener {
+                    findNavController().navigate(
+                        R.id.action_profileMain_to_editFavoritesFragment
+                    )
+                }
+
+            }
         }
 
         binding.profileCHPLogout.setOnClickListener {
             logout()
         }
-
-
     }
 
     private fun setGallery() {

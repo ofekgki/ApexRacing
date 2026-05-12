@@ -1,4 +1,4 @@
-package com.example.apexracing.models
+package com.example.apexracing.models.User
 
 data class UserIds(
     val id: String = "",

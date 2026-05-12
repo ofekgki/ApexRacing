@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/new_favorites"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background_color"
+
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/signup2_LBL_driver"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/favorite_driver"
+            android:textStyle="bold"
+            android:textSize="@dimen/medium_text_card"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/signup2_RV_drivers"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="@dimen/default_big_margin"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            app:layout_constraintTop_toBottomOf="@id/signup2_LBL_driver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/signup2_LBL_team"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/favorite_team"
+            android:textStyle="bold"
+            android:textSize="@dimen/medium_text_card"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/default_big_margin"
+            app:layout_constraintTop_toBottomOf="@id/signup2_RV_drivers"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/signup2_RV_teams"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="10dp"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            app:layout_constraintTop_toBottomOf="@id/signup2_LBL_team"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="12dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/signup2_LBL_hint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_1_driver_1_team_to_finish"
+            android:textColor="@color/grey_inline"
+            android:textSize="@dimen/medium_text_card"
+            android:layout_marginTop="@dimen/default_big_margin"
+            app:layout_constraintTop_toBottomOf="@id/signup2_RV_teams"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/newFav_BTN_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/brand_red"
+            android:text="@string/save_favorites"
+            android:layout_margin="@dimen/default_small_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/newFav_BTN_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/brand_red"
+            android:text="@string/back"
+            android:layout_margin="@dimen/default_small_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

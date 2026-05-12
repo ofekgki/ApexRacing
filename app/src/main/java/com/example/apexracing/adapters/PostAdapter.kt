@@ -37,9 +37,8 @@ class PostAdapter(
 
         holder.binding.postTXTTime.text = UtilitiesFunctions().getTimeSince(post.time)
 
-        val pathUserId = post.userId
+        val pathPhoto = "ProfileImages/${post.userId}/profile_image.jpg"
 
-        val pathPhoto = "/Users/$pathUserId"
         if (pathPhoto.isNotBlank()) {
             storageRef.child(pathPhoto).downloadUrl
                 .addOnSuccessListener { uri ->

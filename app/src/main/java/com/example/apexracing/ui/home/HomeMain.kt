@@ -17,11 +17,12 @@ import com.bumptech.glide.Glide
 import com.example.apexracing.R
 import com.example.apexracing.databinding.FragmentHomeMainBinding
 import com.example.apexracing.models.Circuit
-import com.example.apexracing.models.User
-import com.example.apexracing.models.UserViewModel
+import com.example.apexracing.models.User.User
+import com.example.apexracing.models.User.UserViewModel
 import com.example.apexracing.utilities.DBData
 import com.example.apexracing.utilities.DBData.getNextRace
 import com.example.apexracing.utilities.UtilitiesFunctions
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -54,6 +55,9 @@ class HomeMain : Fragment() {
                 userVM.state.collect { s ->
                     val ready = s as? UserViewModel.UserUiState.Ready ?: return@collect
                     val user = ready.user
+
+                    loadProfileImage(s.uid)
+
                     binding.homeTXTName.text = user.firstName.replaceFirstChar {
                         if (it.isLowerCase()) it.titlecase(getDefault()) else it.toString()
                     }
@@ -185,6 +189,36 @@ class HomeMain : Fragment() {
                 binding.homeTXTSecs.text = "00"
             }
         }.start()
+    }
+    private fun loadProfileImage(userId: String) {
+        FirebaseDatabase.getInstance()
+            .reference
+            .child("users")
+            .child(userId)
+            .child("imgRef")
+            .get()
+            .addOnSuccessListener { snapshot ->
+
+                val imgRef = snapshot.getValue(String::class.java)
+
+                Log.d("IMG_REF", imgRef.toString())
+
+                if (!imgRef.isNullOrEmpty()) {
+                    FirebaseStorage.getInstance()
+                        .getReference(imgRef)
+                        .downloadUrl
+                        .addOnSuccessListener { uri ->
+                            Glide.with(binding.root)
+                                .load(uri)
+                                .into(binding.homeIMGAvatar)
+                        }
+
+                }
+            }
+            .addOnFailureListener { e ->
+                binding.homeIMGAvatar.setImageResource(R.drawable.user_profile_blank)
+                Log.e("LoadImage", "Failed to load profile image", e)
+            }
     }
 
 

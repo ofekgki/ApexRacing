@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.apexracing.R
 import com.example.apexracing.databinding.ActivityMainBinding
-import com.example.apexracing.models.UserViewModel
+import com.example.apexracing.models.User.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
