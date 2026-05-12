@@ -221,7 +221,7 @@
 
         app:layout_constraintStart_toEndOf="@+id/fantasy_LBL_grid"
         app:layout_constraintTop_toTopOf="@+id/fantasy_LBL_grid"
-        tools:text="(0/5)" />
+        :text="(0/5)" />
     <LinearLayout
         android:id="@+id/LL_drivers"
         android:layout_height="wrap_content"

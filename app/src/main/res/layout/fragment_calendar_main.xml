@@ -39,6 +39,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/big_text_card"
             android:textStyle="bold"
+            android:gravity="center"
             android:layout_marginStart="@dimen/default_small_margin"
             android:layout_marginTop="@dimen/default_small_margin"
             app:layout_constraintStart_toStartOf="parent"

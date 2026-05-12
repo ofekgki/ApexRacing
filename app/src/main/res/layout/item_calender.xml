@@ -48,11 +48,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
-        android:text="Chinese GP"
+        tools:text="Chinese GP"
         android:textColor="@color/white"
-        android:textSize="@dimen/default_text_size"
+        android:textSize="@dimen/medium_text_size"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="2"
+        app:layout_constraintEnd_toStartOf="@id/itemRaceRow_trackIcon"
         app:layout_constraintStart_toEndOf="@id/itemRaceRow_day"
         app:layout_constraintTop_toTopOf="@id/itemRaceRow_day" />
 

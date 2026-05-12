@@ -17,4 +17,5 @@
     <dimen name="name_size">48sp</dimen>
     <dimen name="slogan_size">24sp</dimen>
     <dimen name="lbl_margin">100dp</dimen>
+    <dimen name="medium_text_size">14sp</dimen>
 </resources>
