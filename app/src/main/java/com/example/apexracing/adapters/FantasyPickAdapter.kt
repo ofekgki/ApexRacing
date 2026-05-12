@@ -93,8 +93,8 @@ class FantasyPickAdapter(
             .addOnSuccessListener { uri ->
                 val request = Glide.with(imageView)
                     .load(uri)
-                    .placeholder(R.drawable.thestig)
-                    .error(R.drawable.thestig)
+                    .placeholder( if(isDriver) R.drawable.thestig else R.drawable.f1logo)
+                    .error(if(isDriver) R.drawable.thestig else R.drawable.f1logo)
 
                 if (isDriver) {
                     request.centerCrop()
