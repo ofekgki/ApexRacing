@@ -25,53 +25,51 @@ Video demonstration of the app included in the project files.
 ### Welcome Screen: 
  - Choose Between Registration \ Login
 
-<img src="" width="300" alt="Welcome Screen">
+<img src="/Screenshots/Welcome_Screen" width="300" alt="Welcome Screen">
 
 #### Home Page:
  - Get Updates About Your Fantasy League Score & Position.
  -  Get Updates About Your Favorite Driver
  - Get Updates About The Closest Race
 
-<img src="" width="300" alt="Home Page"> 
+<img src="/Screenshots/Home_Page" width="300" alt="Home Page"> 
 
 #### Calendar page:
 
  - See This Year Race Calendar & The Closest Race!
  - 
-<img src="" width="300" alt="Calendar page">
+<img src="/Screenshots/Calendar_Page" width="300" alt="Calendar page">
 
 ### Explore Screen: 
 
 - Choose Between Community / Stats
 
-<img src="" width="300" alt="Explore Screen">
-
 #### Community page:
  - Create posts
  - Interact with other people posts
  
-<img src="" width="300" alt="Community page">
+<img src="/Screenshots/Welcome_Screen" width="300" alt="Community page">
 
 #### Stats page:
 
  - Choose Between Drivers / Constructors
  - Select Your Wanted Season From All the Previous Years
  
-<img src="" width="300" alt="Stats page">
+<img src="/Screenshots/Stats_Page" width="300" alt="Stats page">
 
 #### Fantasy page:
 
  - Choose  Drivers & Constructors To Your Fantasy League Team
  - Manage The Budget For The Team
  
-<img src="" width="300" alt="Fantasy page">
+<img src="/Screenshots/Fantasy_Page" width="300" alt="Fantasy page">
 
 #### Profile page:
 
  - Change Favorite Drivers & Constructors
  - Upload Profile Photo
  -  
-<img src="" width="300" alt="Profile page">
+<img src="/Screenshots/Profile_Page" width="300" alt="Profile page">
 
 
 
