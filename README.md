@@ -25,7 +25,7 @@ Video demonstration of the app included in the project files.
 ### Welcome Screen: 
  - Choose Between Registration \ Login
 
-<img src="\Screenshots\Welcom_Screen" width="300" alt="Welcome Screen">
+<img src="\Screenshots\Welcome_Screen.jpg" width="300" alt="Welcome Screen">
 
 #### Home Page:
  - Get Updates About Your Fantasy League Score & Position.
