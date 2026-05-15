@@ -76,7 +76,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
 
-    // Glide + Lottie + MPAndroidChart
+    // Glide + Lottie
 
     implementation(libs.glide)
     implementation(libs.androidx.core.splashscreen)
