@@ -526,7 +526,7 @@
                     android:layout_height="0dp"
                     app:shapeAppearance="@style/CircleImage"
                     android:src="@drawable/f1car"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
                     android:alpha="0.7"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
