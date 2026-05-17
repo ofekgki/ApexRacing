@@ -48,7 +48,7 @@ Video demonstration of the app included in the project files.
  - Create posts
  - Interact with other people posts
  
-<img src="/Screenshots/Welcome_Screen.jpg" width="300" alt="Community page">
+<img src="/Screenshots/Community_page.jpg" width="300" alt="Community page">
 
 #### Stats page:
 
