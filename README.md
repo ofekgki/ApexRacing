@@ -89,8 +89,11 @@ Video demonstration of the app included in the project files.
 
 ### Networking & APIs
 - Retrofit
+	- https://github.com/square/retrofit	 
 - Gson
+	- https://github.com/google/gson 
 - OkHttp Logging Interceptor
+	- https://github.com/square/okhttp	 
 - Jolpica F1 API
 	-  https://github.com/jolpica/jolpica-f1
 
@@ -106,7 +109,9 @@ Video demonstration of the app included in the project files.
 ### Image & Animation Libraries
 
 - Glide
+	- https://github.com/bumptech/glide 
 - Lottie Animations
+	- https://github.com/airbnb/lottie-web 
 
 ### Tools & Platforms
 - Android Studio
