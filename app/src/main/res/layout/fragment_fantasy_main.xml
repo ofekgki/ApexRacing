@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fantasy.FantasyMain"
     android:background="@color/background_color"
-    >
+    tools:context=".ui.fantasy.FantasyMain">
 
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -14,14 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:title="@string/team_management"
         android:textAlignment="center"
-        app:titleTextColor="@color/white"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
- />
+        app:title="@string/team_management"
+        app:titleTextColor="@color/white" />
 
     <com.google.android.material.card.MaterialCardView
 
@@ -66,14 +64,14 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="@dimen/default_small_margin"
-                tools:text="$24.5"
                 android:textColor="@color/white"
                 android:textSize="@dimen/big_text_card"
-
                 android:textStyle="bold"
+
                 app:layout_constraintEnd_toStartOf="@+id/budget_GUIDE_left"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/budget_LBL_remaining_title" />
+                app:layout_constraintTop_toBottomOf="@id/budget_LBL_remaining_title"
+                tools:text="$24.5" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/budget_LBL_M"
@@ -140,14 +138,14 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginBottom="@dimen/default_small_margin"
-                tools:text="75.5% Used"
                 android:textColor="@color/red_inline"
                 android:textColorHighlight="@color/white"
-
                 android:textSize="@dimen/small_text_card"
+
                 app:layout_constraintBottom_toTopOf="@id/budget_PRG"
                 app:layout_constraintEnd_toStartOf="@+id/budget_GUIDE_left"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="75.5% Used" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/budget_LBL_target"
@@ -201,86 +199,93 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginTop="@dimen/default_big_margin"
         android:text="@string/my_grid"
         android:textColor="@color/white"
-        android:textSize="@dimen/medium_text_card"
 
-        android:layout_marginTop="@dimen/default_big_margin"
+        android:textSize="@dimen/medium_text_card"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/fantasy_LBL_amount"
+        :text="(0/5)"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
+        android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="@dimen/small_text_card"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
 
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toEndOf="@+id/fantasy_LBL_grid"
-        app:layout_constraintTop_toTopOf="@+id/fantasy_LBL_grid"
-        :text="(0/5)" />
+        app:layout_constraintTop_toTopOf="@+id/fantasy_LBL_grid" />
+
     <LinearLayout
         android:id="@+id/LL_drivers"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:weightSum="5"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_fragment_margin"
-        app:layout_constraintStart_toStartOf="parent"
+        android:weightSum="5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fantasy_LBL_grid"
 
         >
-        <androidx.appcompat.widget.AppCompatImageView
+
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/fantasy_IMG_driver1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/user_profile_blank"
             android:layout_weight="1"
-            />
+            android:src="@drawable/user_profile_blank"
+            app:shapeAppearanceOverlay="@style/CircleImage" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/fantasy_IMG_driver2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/user_profile_blank"
             android:layout_weight="1"
+            android:src="@drawable/user_profile_blank"
+            app:shapeAppearanceOverlay="@style/CircleImage"
 
 
             />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/fantasy_IMG_driver3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/user_profile_blank"
             android:layout_weight="1"
+            android:src="@drawable/user_profile_blank"
+
+            app:shapeAppearanceOverlay="@style/CircleImage"
 
 
             />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/fantasy_IMG_team1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/user_profile_blank"
             android:layout_weight="1"
+            android:src="@drawable/user_profile_blank"
+
+            app:shapeAppearanceOverlay="@style/CircleImage"
 
 
             />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/fantasy_IMG_team2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:src="@drawable/user_profile_blank"
-
+            app:shapeAppearanceOverlay="@style/CircleImage"
 
             />
-    </LinearLayout>>
+    </LinearLayout>
 
 
     <com.google.android.material.button.MaterialButton
@@ -327,38 +332,35 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/default_small_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/fantasy_BTN_save"
-        app:layout_constraintTop_toBottomOf="@id/fantasy_LBL_available"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fantasy_LBL_available" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fantasy_RV_constructors"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/default_small_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fantasy_BTN_save"
-        app:layout_constraintTop_toBottomOf="@id/fantasy_LBL_available"
         android:visibility="gone"
-        />
+        app:layout_constraintBottom_toTopOf="@id/fantasy_BTN_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fantasy_LBL_available" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/fantasy_BTN_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="@string/save_team"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/black"
-
         android:layout_marginBottom="@dimen/default_fragment_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        android:backgroundTint="@color/white"
+        android:text="@string/save_team"
+
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

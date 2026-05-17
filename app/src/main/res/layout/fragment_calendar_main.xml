@@ -175,8 +175,18 @@
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/calendar_HERO"
+        app:layout_constraintStart_toStartOf="@id/calendar_HERO"
+        app:layout_constraintEnd_toEndOf="@id/calendar_HERO"
+
+        />
     <!-- List below hero -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendar_RV"
@@ -184,6 +194,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:paddingBottom="96dp"
+        android:paddingTop="8dp"
         android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/calendar_HERO"

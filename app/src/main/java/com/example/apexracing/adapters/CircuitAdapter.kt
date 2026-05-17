@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.apexracing.R
 import com.example.apexracing.databinding.ItemCalenderBinding
 import com.example.apexracing.models.*
 import com.google.firebase.storage.FirebaseStorage
@@ -43,7 +44,9 @@ class CircuitAdapter(var races: List<Circuit> = emptyList()) :
                 .addOnSuccessListener { uri ->
                     Glide.with(holder.itemView)
                         .load(uri)
+                        .placeholder(R.drawable.bg_fantasy_add_button)
                         .into(holder.binding.itemRaceRowTrackIcon)
+
                 }
         }
     }

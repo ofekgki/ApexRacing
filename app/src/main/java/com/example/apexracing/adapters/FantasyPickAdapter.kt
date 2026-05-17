@@ -79,7 +79,7 @@ class FantasyPickAdapter(
         imageView.scaleType = if (isDriver) {
             ImageView.ScaleType.CENTER_CROP
         } else {
-            ImageView.ScaleType.FIT_CENTER
+            ImageView.ScaleType.CENTER_CROP
         }
 
         val cleanPath = path?.trim()?.removePrefix("/")
