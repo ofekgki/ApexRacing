@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_calendar_hero_red"
-        android:layout_marginTop="@dimen/default_small_margin"
+        android:layout_marginVertical="@dimen/default_small_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -80,7 +80,7 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/calendar_LBL_title" />
+                app:layout_constraintTop_toBottomOf="@+id/calendar_LBL_round" />
 
         <!-- Countdown -->
         <com.google.android.material.textview.MaterialTextView
