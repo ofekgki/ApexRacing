@@ -32,7 +32,7 @@ Video demonstration of the app included in the project files.
  -  Get Updates About Your Favorite Driver
  - Get Updates About The Closest Race
 
-<img src="/Screenshots/Home_Page.jpg" width="300" alt="Home Page"> 
+<img src="/Screenshots/Home_page.jpg" width="300" alt="Home Page"> 
 
 #### Calendar page:
 
