@@ -37,7 +37,7 @@ Video demonstration of the app included in the project files.
 #### Calendar page:
 
  - See This Year Race Calendar & The Closest Race!
- - 
+   
 <img src="/Screenshots/Calendar_Page.jpg" width="300" alt="Calendar page">
 
 ### Explore Screen: 
@@ -48,7 +48,7 @@ Video demonstration of the app included in the project files.
  - Create posts
  - Interact with other people posts
  
-<img src="/Screenshots/Community_page.jpg" width="300" alt="Community page">
+<img src="/Screenshots/Community_Page.jpg" width="300" alt="Community page">
 
 #### Stats page:
 
@@ -68,7 +68,7 @@ Video demonstration of the app included in the project files.
 
  - Change Favorite Drivers & Constructors
  - Upload Profile Photo
- -  
+   
 <img src="/Screenshots/Profile_Page.jpg" width="300" alt="Profile page">
 
 
