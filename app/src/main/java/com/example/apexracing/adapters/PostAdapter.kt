@@ -1,5 +1,6 @@
 package com.example.apexracing.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -37,21 +38,8 @@ class PostAdapter(
 
         holder.binding.postTXTTime.text = UtilitiesFunctions().getTimeSince(post.time)
 
-        val pathPhoto = "ProfileImages/${post.userId}/profile_image.jpg"
 
-        if (pathPhoto.isNotBlank()) {
-            storageRef.child(pathPhoto).downloadUrl
-                .addOnSuccessListener { uri ->
-                    Glide.with(holder.itemView)
-                        .load(uri)
-                        .into(holder.binding.postIMGAvatar)
-                }
-                .addOnFailureListener {
-                    Glide.with(holder.itemView)
-                        .load(R.drawable.user_profile_blank)
-                        .into(holder.binding.postIMGAvatar)
-                }
-        }
+        loadProfileImage(post.userId, holder)
 
         holder.binding.postBTNLike.setOnClickListener {
             onLikeClick(post)
@@ -67,5 +55,39 @@ class PostAdapter(
         RecyclerView.ViewHolder(binding.root)
 
 
+    private fun loadProfileImage(userId: String, holder: PostViewHolder) {
+
+        val folderRef = storageRef.child("ProfileImages/$userId")
+
+        folderRef.listAll()
+            .addOnSuccessListener { result ->
+
+                if (result.items.isNotEmpty()) {
+
+                    result.items[0].downloadUrl
+                        .addOnSuccessListener { uri ->
+
+                            Glide.with(holder.itemView)
+                                .load(uri)
+                                .placeholder(R.drawable.user_profile_blank)
+                                .error(R.drawable.user_profile_blank)
+                                .into(holder.binding.postIMGAvatar)
+                        }
+
+                } else {
+
+                    Glide.with(holder.itemView)
+                        .load(R.drawable.user_profile_blank)
+                        .into(holder.binding.postIMGAvatar)
+                }
+            }
+
+            .addOnFailureListener {
+
+                Glide.with(holder.itemView)
+                    .load(R.drawable.user_profile_blank)
+                    .into(holder.binding.postIMGAvatar)
+            }
+    }
 }
 

@@ -171,7 +171,7 @@ private suspend fun uploadPost(userId: String, userName: String, postText: Strin
             }
             .addOnFailureListener { e ->
                 binding.communityIMGAvatar.setImageResource(R.drawable.user_profile_blank)
-                Log.e("LoadImage", "Failed to load profile image", e)
+                Log.e("LoadImage", "Failed to load profile image: ${e.message}")
             }
     }
 

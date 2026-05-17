@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.apexracing.R
 import com.example.apexracing.databinding.ActivityWelcomeBinding
+import com.example.apexracing.utilities.DBData
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -24,7 +25,6 @@ class WelcomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         initViews()
     }
 

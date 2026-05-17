@@ -75,11 +75,6 @@ class HomeMain : Fragment() {
                         binding.homeTXTTrack.text = "📍Space"
                     }
 
-                    DBData.updateFantasyScore(
-                        user.fantasyDriver,
-                        user.fantasyConstructor
-                    )
-
                     binding.homeTXTPointsValue.text = user.fantasyPoints.toString()
 
                     DBData.getUserFantasyRank(

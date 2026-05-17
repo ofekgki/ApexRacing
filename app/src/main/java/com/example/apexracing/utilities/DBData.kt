@@ -166,30 +166,6 @@ object DBData {
 
     }
 
-    fun updateFantasyScore(drivers: List<Driver>, constructors: List<Constructor>) {
-
-        var score = 0
-
-        for (driver in drivers) {
-            score += driver.points
-        }
-        for (constructor in constructors) {
-            score += constructor.points
-        }
-
-        val uid = FirebaseAuth.getInstance().currentUser?.uid
-
-        if (uid != null) {
-            FirebaseDatabase
-                .getInstance()
-                .getReference("users")
-                .child(uid)
-                .child("fantasyPoints")
-                .setValue(score)
-        }
-
-    }
-
     fun getUserFantasyRank(
         onResult: (rank: Int, totalUsers: Int) -> Unit,
         onError: (Exception) -> Unit
@@ -222,6 +198,57 @@ object DBData {
                 onError(error)
             }
 
+    }
+
+    fun updateFantasyScoresForAllUsers() {
+
+        val usersRef = FirebaseDatabase
+            .getInstance()
+            .getReference("users")
+
+        usersRef.get()
+            .addOnSuccessListener { snapshot ->
+
+                for (userSnapshot in snapshot.children) {
+
+                    var score = 0
+
+                    val driverIds = userSnapshot
+                        .child("fantasyDriverIds")
+                        .children
+                        .mapNotNull { it.getValue(String::class.java) }
+
+                    val constructorIds = userSnapshot
+                        .child("fantasyConstructorIds")
+                        .children
+                        .mapNotNull { it.getValue(String::class.java) }
+
+
+
+                    for (driverId in driverIds) {
+                        val driver = drivers.find { it.id == driverId }
+
+
+                        if (driver != null) {
+                            score += driver.points
+                        }
+                    }
+
+                    for (constructorId in constructorIds) {
+                        val constructor = teams.find { it.id == constructorId }
+
+
+                        if (constructor != null) {
+                            score += constructor.points
+                        }
+                    }
+
+                    userSnapshot.ref
+                        .child("fantasyPoints")
+                        .setValue(score)
+
+                }
+            }
     }
 }
 

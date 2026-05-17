@@ -23,7 +23,10 @@ class LoadingActivity : AppCompatActivity() {
         startLogoAnimation()
 
         DBData.preloadAndWait()
-            .addOnSuccessListener { goNext() }
+            .addOnSuccessListener {
+                DBData.updateFantasyScoresForAllUsers()
+                goNext()
+            }
             .addOnFailureListener { e ->
                 Log.d("LoadingActivity", "Error getting documents: ${e.message}")
                 finish()
